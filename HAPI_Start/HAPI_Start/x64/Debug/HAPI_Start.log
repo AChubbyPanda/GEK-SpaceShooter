@@ -1,0 +1,15 @@
+﻿  Base.cpp
+  Bullet.cpp
+  Control.cpp
+  Enemy.cpp
+  Entity.cpp
+  Graphics.cpp
+  main.cpp
+C:\Users\Neil\Desktop\HAPI_Start\HAPI_Start\Player.h(10,1): error C2504: 'Control': base class undefined
+  Player.cpp
+C:\Users\Neil\Desktop\HAPI_Start\HAPI_Start\Control.h(11,1): error C2504: 'Player': base class undefined
+  Rectangle.cpp
+  Visualisation.cpp
+  World.cpp
+  Generating Code...
+C:\Users\Neil\Desktop\HAPI_Start\HAPI_Start\Control.h(11,1): error C2504: 'Player': base class undefined
