@@ -34,23 +34,6 @@ bool Rectangle::CompletelyOutside(const Rectangle& Other) const
 	return false;
 }
 
-bool Rectangle::CompletelyInside(const Rectangle& Other) const
-{
-	if (Left < Other.Left)
-		return false;
-
-	if (Right < Other.Right)
-		return false;
-
-	if (Top < Other.Top)
-		return false;
-
-	if (Bottom < Other.Bottom)
-		return false;
-
-	return true;
-}
-
 void Rectangle::ClipTo(const Rectangle& Other)
 {
 	Left = std::max(Left, Other.Left);

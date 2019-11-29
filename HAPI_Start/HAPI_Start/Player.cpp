@@ -6,6 +6,11 @@ const void Player::TakeDamage()
 	m_Health = temp;
 }
 
+bool Player::IsDead()
+{
+	return true;
+}
+
 const int Player::GetScore()
 {
 	return p_Score;
@@ -16,7 +21,7 @@ void Player::GetInPut()
 	return ControlInPut();
 }
 
-Player::Player(const std::string p_Name, int p_PosX, int p_PosY, int p_Health, int p_Damage, ESide p_Side)
+Player::Player(const std::string p_Name, int p_PosX, int p_PosY, int p_Health, int p_Damage, const ESide p_Side)
 	:p_Score{ 0 }
 {
 	m_Name = p_Name;

@@ -18,9 +18,6 @@
 
 // Include the HAPI header to get access to all of HAPIs interfaces
 #include <HAPI_lib.h>
-#include"Visualisation.h"
-#include "Rectangle.h"
-#include "Player.h"
 // HAPI itself is wrapped in the HAPISPACE namespace
 using namespace HAPISPACE;
 using namespace std;
@@ -30,11 +27,7 @@ using namespace std;
 // When this function exits the program will close down
 void HAPI_Main()
 {
-	Visualisation::Initialise();
-	Visualisation* visualisation = Visualisation::Get();
+
 	
-	while (HAPI.Update())
-	{
-		
-	}
+	
 }

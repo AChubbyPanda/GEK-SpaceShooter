@@ -14,48 +14,38 @@ void Control::ControlInPut()
 	{
 		if (ControlData.digitalButtons[HK_DIGITAL_DPAD_UP] || ControlData.analogueButtons[HK_ANALOGUE_LEFT_THUMB_Y] > LeftDeadZoneMax)
 		{
-			m_PosY -= Speed;
+			-= Speed;
 		}
 		if (ControlData.digitalButtons[HK_DIGITAL_DPAD_DOWN] || ControlData.analogueButtons[HK_ANALOGUE_LEFT_THUMB_Y] < LeftDeadZoneMin)
 		{
-			m_PosY += Speed;
+			 += Speed;
 		}
 		if (ControlData.digitalButtons[HK_DIGITAL_DPAD_LEFT] || ControlData.analogueButtons[HK_ANALOGUE_LEFT_THUMB_X] < LeftDeadZoneMin)
 		{
-			m_PosX -= Speed;
+			 -= Speed;
 		}
 		if (ControlData.digitalButtons[HK_DIGITAL_DPAD_RIGHT] || ControlData.analogueButtons[HK_ANALOGUE_LEFT_THUMB_X] > LeftDeadZoneMax)
 		{
-			m_PosX += Speed;
+			 += Speed;
 		}
 	}
 
 	//	Keyboard Input 
 	if (KeyData.scanCode['W'])
 	{
-		m_PosY -= Speed;
+		 -= Speed;
 	}
 	if (KeyData.scanCode['A'])
 	{
-		m_PosX -= Speed;
+		 -= Speed;
 	}
 	if (KeyData.scanCode['S'])
 	{
-		m_PosY += Speed;
+		 += Speed;
 	}
 	if (KeyData.scanCode['D'])
 	{
-		m_PosX += Speed;
-	}
-
-	//This is for the rumble in the middle of the sceen
-	if (m_PosX > 540 && m_PosX < 740 && m_PosY > 260 && m_PosY < 460)
-	{
-		HAPI.SetControllerRumble(0, 20000, 20000);
-	}
-	else
-	{
-		HAPI.SetControllerRumble(0, 0, 0);
+		 += Speed;
 	}
 }
 

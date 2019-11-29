@@ -13,11 +13,11 @@ private:
 
 public:
 	const void TakeDamage() override;
+	bool IsDead() override;
 	const int GetScore();
 	void GetInPut();
 
-protected:
-	Player(const std::string p_Name, int p_PosX, int p_PosY, int p_Health, int p_Damage, ESide p_Side);
+	Player(const std::string p_Name, int p_PosX, int p_PosY, int p_Health, int p_Damage, const ESide p_Side);
 	~Player();
 };
 #endif // Player_h //This is used when more than one header file is compiling the same header file.

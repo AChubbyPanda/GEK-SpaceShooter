@@ -3,11 +3,10 @@
 #define Control_h //This is used when more than one header file is compiling the same header file.
 
 #include <HAPI_lib.h>
-#include"Player.h"
 
 using namespace HAPISPACE;
 
-class Control : public Player
+class Control 
 {
 private:
 	const HAPI_TKeyboardData& KeyData = HAPI.GetKeyboardData();

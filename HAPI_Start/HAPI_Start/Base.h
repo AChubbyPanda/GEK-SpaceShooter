@@ -1,7 +1,7 @@
 #pragma once
-#include<string>
+#include <string>
 
-enum class ESide
+enum ESide 
 {
 	eSidePlayer,
 	eSideEnemy,
