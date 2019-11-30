@@ -73,8 +73,8 @@ unsigned int Visualisation::CreateSprite(const std::string& FileName, const std:
 	{
 	}
 
-	M_TextureVector.push_back(NewVisualisation);
-	return M_TextureVector.size() - 1;
+	M_Vis.push_back(NewVisualisation);
+	return M_Vis.size() - 1;
 }
 
 bool Visualisation::LoadTexture(const std::string& FileName)
@@ -88,10 +88,9 @@ bool Visualisation::LoadTexture(const std::string& FileName)
 	return true;
 }
 
-
 void Visualisation::Draw(unsigned int ID, int PosX, int PosY)
 {   //Create an ID for everthing drawn and pushed into the Vector
-	M_TextureVector[ID]->BlitzAlpha(Screen, TexWidth, TexHeight, PosX, PosY);
+	M_Vis[ID]->BlitzAlpha(Screen, TexWidth, TexHeight, PosX, PosY);
 }
 
 void Visualisation::Blit(BYTE* Screen, int ScreenWidth, int ScreenHeight, int PosX, int PosY)

@@ -6,6 +6,11 @@ const void Bullet::TakeDamage()
 	m_Health = temp;
 }
 
+bool Bullet::IsDead()
+{
+	return true;
+}
+
 Bullet::Bullet(const std::string b_Name, int b_PosX, int b_PosY, int b_Health, int b_Damage, const ESide b_Side)
 {
 	m_Name = b_Name;

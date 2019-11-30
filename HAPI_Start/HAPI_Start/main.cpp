@@ -18,16 +18,20 @@
 
 // Include the HAPI header to get access to all of HAPIs interfaces
 #include <HAPI_lib.h>
+#include "World.h"
 // HAPI itself is wrapped in the HAPISPACE namespace
 using namespace HAPISPACE;
 using namespace std;
 
+World world;
 
 // Every HAPI program has a HAPI_Main as an entry point
 // When this function exits the program will close down
 void HAPI_Main()
 {
-
-	
-	
+	if (!world.Initialise(1280, 720))
+	{
+		world.run();
+		//HAPI.UserMessage("Failed to Initialise", "ERROR");
+	};
 }
