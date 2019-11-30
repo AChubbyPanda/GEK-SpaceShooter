@@ -14,23 +14,23 @@ Visualisation::~Visualisation()
 	delete[] TextureData;
 }
 
-//void Visualisation::Initialise()
-//{
-//	if (!Instance)
-//	{
-//		Instance = new Visualisation();
-//		// Check for instance already created
-//	}
-//
-//	if (!HAPI.Initialise(Instance->v_ScreenWidth, Instance->v_ScreenHeight, "Maven, Neil, V8039070"))
-//	{
-//		return;
-//	}
-//
-//	Instance->Screen = HAPI.GetScreenPointer();
-//
-//	HAPI.SetShowFPS(true);
-//}
+void Visualisation::Initialise()
+{
+	if (!Instance)
+	{
+		Instance = new Visualisation();
+		// Check for instance already created
+	}
+
+	if (!HAPI.Initialise(Instance->v_ScreenWidth, Instance->v_ScreenHeight, "Maven, Neil, V8039070"))
+	{
+		return;
+	}
+
+	Instance->Screen = HAPI.GetScreenPointer();
+
+	HAPI.SetShowFPS(true);
+}
 
 void Visualisation::Shutdown()
 {

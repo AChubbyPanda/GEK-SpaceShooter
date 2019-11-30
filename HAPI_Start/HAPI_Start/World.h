@@ -13,6 +13,7 @@ class Entity;
 class World
 {
 private:
+	int width{ 720 },height{ 720 };
 	//Gets the data needed from the create sprite.
 	std::shared_ptr< Visualisation > m_Viz;
 	std::vector <std::shared_ptr<Entity>> m_Entity;

@@ -14,15 +14,10 @@ private:
 	int TexWidth{ 0 };
 	int TexHeight{ 0 };
 	// Screen size
-	int v_ScreenWidth{ 1280 };
+	int v_ScreenWidth{ 720 };
 	int v_ScreenHeight{ 720 };
 
-	//////////////////
-	///////////////
-	//storing correct data, will not transfer to vector in world.h/ cpp
 	std::vector<Visualisation*> M_Vis;
-	//////////////
-	////////////////
 
 	void ClearToColour(HAPI_TColour Col);
 	void ClearToGray(BYTE grey = 0);
@@ -34,7 +29,6 @@ public:
 
 	unsigned int CreateSprite(const std::string& filename, const std::string& name);
 	void Draw(unsigned int ID, int PosX, int PosY);
-
 
 	void Blit(BYTE* Screen, int ScreenWidth, int ScreenHeight, int PosX, int PosY);
 	void BlitzAlpha(BYTE* Position, int ScreenWidth, int ScreenHeight, int PosX, int PosY);

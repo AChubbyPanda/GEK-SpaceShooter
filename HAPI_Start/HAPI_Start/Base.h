@@ -5,7 +5,7 @@ enum ESide
 {
 	eSidePlayer,
 	eSideEnemy,
-	SideNeutral
+	eSideNeutral
 };
 
 class Base

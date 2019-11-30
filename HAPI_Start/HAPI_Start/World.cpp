@@ -11,19 +11,20 @@ bool World::Initialise(int width, int height)
 	m_Viz->CreateSprite("Data\\PNG\\Enemies\\enemyGreen4.png", "EnemyGraphicGreen");
 	m_Viz->CreateSprite("Data\\PNG\\Lasers\\laserGreen04.png", "EnemyLaserGreen");
 
-	////////////////
-	////////////////
-	//Pushbacks having issues, unsure why
-	Player* background = new Player("BackGround", 0, 0, 1, 0, SideNeutral);
-	//m_Entity.push_back(background);
+	
+	std::shared_ptr<Entity> backGround = std::make_shared<Entity>("BackGround", 0, 0, 1, 0, eSideNeutral);
+	//textureID = m_Entity.size() - 1;
+	m_Entity.push_back(backGround);
 
-	Player* player = new Player ("PlayerGraphic",100,100,20,1, eSidePlayer);
-	//m_Entity.push_back(player);
+	//Player* player = new Player ("PlayerGraphic",100,100,20,1, eSidePlayer);
+	std::shared_ptr<Entity> player = std::make_shared<Entity>("PlayerGraphic", 100, 100, 20, 1, eSidePlayer);
+	m_Entity.push_back(player);
 
-	for (int i = 0; m_Entity.size() < 101; i++)
+	for (int i = 0; m_Entity.size() < 102; i++)
 	{
-		Bullet* playerBullet = new Bullet("PlayerLaser", 0, 0, 1, 2, eSidePlayer);
-		//m_Entity.push_back(playerBullet);
+		//need to look at the spawn location of the bullets
+		std::shared_ptr<Entity> playerBullet = std::make_shared<Entity>("PlayerLaser", 0, 0, 1, 0, eSidePlayer);
+		m_Entity.push_back(playerBullet);
 		i++;
 	}
 	
@@ -32,8 +33,10 @@ bool World::Initialise(int width, int height)
 
 void World::run()
 {
+	HAPI.Initialise(width,height, "Maven, Neil, V8039070");
 	while (HAPI.Update())
 	{
-		m_Viz->Draw(1,100,100);
+		Visualisation::Initialise();
+		m_Viz->Draw(0, 100, 100);
 	}
 }

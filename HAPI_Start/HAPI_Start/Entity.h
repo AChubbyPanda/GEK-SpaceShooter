@@ -3,6 +3,7 @@
 #include <HAPI_lib.h>
 #include <Vector>
 #include "Visualisation.h"
+#include "Player.h"
 
 using namespace HAPISPACE;
 
@@ -13,8 +14,7 @@ private:
 	std::vector <Entity*> m_Entity;
 
 public:
-
-	Entity();
+	Entity(const std::string e_Name, int e_PosX, int e_PosY, int e_Health, int e_Damage, const ESide e_Side);
 	~Entity();
 };
 
