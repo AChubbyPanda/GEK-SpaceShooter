@@ -29,11 +29,7 @@ void MenuSystem::LauchGame()
 {
 	World world;
 
-	if (!world.Initialise(1280, 720))
-	{
-		world.run();
-		//HAPI.UserMessage("Failed to Initialise", "ERROR");
-	};
+	
 }
 
 MenuSystem::MenuSystem()

@@ -1,7 +1,8 @@
 #include "World.h"
 
-bool World::Initialise(int width, int height)
+bool World::Initialise()
 {
+	Visualisation::Get()->Initialise();
 	m_Viz = std::make_shared< Visualisation >();
 
 	//Load Level
@@ -27,16 +28,13 @@ bool World::Initialise(int width, int height)
 		m_Entity.push_back(playerBullet);
 		i++;
 	}
-	
-	return false;
+	return true;
 }
 
 void World::run()
 {
-	HAPI.Initialise(width,height, "Maven, Neil, V8039070");
 	while (HAPI.Update())
 	{
-		Visualisation::Initialise();
 		m_Viz->Draw(0, 100, 100);
 	}
 }

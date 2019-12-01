@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 
 enum ESide 
 {
@@ -11,7 +12,8 @@ enum ESide
 class Base
 {
 private:
-	
+	bool Dead;
+	bool SetToDead();
 
 public:
 	virtual bool IsDead() = 0;

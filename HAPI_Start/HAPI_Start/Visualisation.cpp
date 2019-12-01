@@ -5,13 +5,21 @@ static Visualisation* Instance = nullptr;
 Visualisation::Visualisation()
 	: Screen(nullptr)
 	, TextureData(nullptr)
+	, v_ScreenWidth(720)
+	, v_ScreenHeight(720)
 {
 }
 
 Visualisation::~Visualisation()
 {
-	delete Screen;
+	//delete Screen;
 	delete[] TextureData;
+
+	//Deletes all stored data in the vector, stops memory leaks.
+	for (size_t i = 0; i != M_Vis.size(); i++)
+	{
+		delete M_Vis[i];
+	}
 }
 
 void Visualisation::Initialise()
