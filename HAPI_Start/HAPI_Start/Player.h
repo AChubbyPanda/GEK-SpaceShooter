@@ -1,12 +1,13 @@
-#pragma once
 #ifndef Player_h //This is used when more than one header file is compiling the same header file.
-#define player_h //This is used when more than one header file is compiling the same header file.
+#define Player_h //This is used when more than one header file is compiling the same header file.
 
-#include<string>
-#include"Base.h"
-#include"Control.h"
+#include "Entity.h"
+#include "Base.h"
+#include "Control.h"
 
-class Player : public Base, public Control
+#include <string>
+
+class Player : public Entity, public Base, public Control
 {
 private:
 	int p_Score;

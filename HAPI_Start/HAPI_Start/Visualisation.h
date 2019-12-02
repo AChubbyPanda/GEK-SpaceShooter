@@ -2,6 +2,7 @@
 #include <HAPI_lib.h>
 #include "Rectangle.h"
 #include "Player.h"
+#include <string>
 
 using namespace HAPISPACE;
 
@@ -16,8 +17,7 @@ private:
 	// Screen size
 	int v_ScreenWidth;
 	int v_ScreenHeight;
-
-	std::vector<Visualisation*> M_Vis;
+	std::vector<Visualisation*> m_Vis;
 
 	void ClearToColour(HAPI_TColour Col);
 	void ClearToGray(BYTE grey = 0);

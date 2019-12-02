@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 
-enum ESide 
+enum class ESide
 {
 	eSidePlayer,
 	eSideEnemy,

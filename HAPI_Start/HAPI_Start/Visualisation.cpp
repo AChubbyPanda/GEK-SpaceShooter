@@ -16,9 +16,9 @@ Visualisation::~Visualisation()
 	delete[] TextureData;
 
 	//Deletes all stored data in the vector, stops memory leaks.
-	for (size_t i = 0; i != M_Vis.size(); i++)
+	for (size_t i = 0; i != m_Vis.size(); i++)
 	{
-		delete M_Vis[i];
+		delete m_Vis[i];
 	}
 }
 
@@ -81,8 +81,8 @@ unsigned int Visualisation::CreateSprite(const std::string& FileName, const std:
 	{
 	}
 
-	M_Vis.push_back(NewVisualisation);
-	return M_Vis.size() - 1;
+	m_Vis.push_back(NewVisualisation);
+	return m_Vis.size() - 1;
 }
 
 bool Visualisation::LoadTexture(const std::string& FileName)
@@ -97,8 +97,9 @@ bool Visualisation::LoadTexture(const std::string& FileName)
 }
 
 void Visualisation::Draw(unsigned int ID, int PosX, int PosY)
-{   //Create an ID for everthing drawn and pushed into the Vector
-	M_Vis[ID]->BlitzAlpha(Screen, TexWidth, TexHeight, PosX, PosY);
+{  
+	//Create an ID for everthing drawn and pushed into the Vector
+	m_Vis[ID]->BlitzAlpha(Screen, TexWidth, TexHeight, PosX, PosY);
 }
 
 void Visualisation::Blit(BYTE* Screen, int ScreenWidth, int ScreenHeight, int PosX, int PosY)

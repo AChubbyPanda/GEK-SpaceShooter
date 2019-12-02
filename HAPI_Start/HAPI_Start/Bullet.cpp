@@ -12,6 +12,7 @@ bool Bullet::IsDead()
 }
 
 Bullet::Bullet(const std::string b_Name, int b_PosX, int b_PosY, int b_Health, int b_Damage, const ESide b_Side)
+	: Entity("", 0,0,0,0, b_Side)
 {
 	m_Name = b_Name;
 	m_PosX = b_PosX;

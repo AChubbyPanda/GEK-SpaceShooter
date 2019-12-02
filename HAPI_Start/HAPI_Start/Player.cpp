@@ -23,6 +23,7 @@ void Player::GetInPut()
 
 Player::Player(const std::string p_Name, int p_PosX, int p_PosY, int p_Health, int p_Damage, const ESide p_Side)
 	:p_Score{ 0 }
+	, Entity("", 0, 0, 0, 0, p_Side)
 {
 	m_Name = p_Name;
 	m_PosX = p_PosX;

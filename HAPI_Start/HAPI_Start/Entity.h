@@ -1,11 +1,10 @@
-#pragma once
+#ifndef Entity_h
+#define Entity_h
 
 #include <HAPI_lib.h>
 #include <Vector>
-#include "Visualisation.h"
-#include "Player.h"
 
-using namespace HAPISPACE;
+enum class ESide;
 
 class Entity
 {
@@ -18,3 +17,4 @@ public:
 	~Entity();
 };
 
+#endif // Entity_h

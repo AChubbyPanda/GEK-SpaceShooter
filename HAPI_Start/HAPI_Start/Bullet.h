@@ -1,8 +1,9 @@
 #pragma once
 #include<string>
-#include"Base.h"
+#include "Base.h"
+#include "Entity.h"
 
-class Bullet : public Base
+class Bullet : public Entity, public Base
 {
 private:
 

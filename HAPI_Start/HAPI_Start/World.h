@@ -2,13 +2,8 @@
 #include <HAPI_lib.h>
 #include <vector>
 #include "Visualisation.h"
-#include "Player.h"
-#include "Bullet.h"
-#include "Enemy.h"
-#include "Entity.h"
 
 class Visualisation;
-class Entity;
 
 class World
 {
