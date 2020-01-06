@@ -6,17 +6,29 @@ const void Enemy::TakeDamage()
 	m_Health = temp;
 }
 
-Enemy::Enemy(const std::string e_Name, int e_PosX, int e_PosY, int e_Health, int e_Damage, const ESide e_Side, int e_Points)
-	:m_Points{}
+void Enemy::Update()
 {
-	m_Name = e_Name;
-	m_PosX = e_PosX;
-	m_PosY = e_PosY;
-	m_Health = e_Health;
-	m_Damage = e_Damage;
-	m_Side = e_Side;
-	m_Points = e_Points;
+	// AI stuff
 }
+
+ESide Enemy::GetSide() const
+{
+	return ESide::eSideEnemy;
+}
+
+Enemy::Enemy (std::string EntityName, int enemyHealth, int enemyDamage, int enemyPoints)
+	: Entity(EntityName)
+	, m_Points{}
+{
+	m_Health = enemyHealth;
+	m_Damage = enemyDamage;
+	m_Points = enemyPoints;
+}
+
+//Enemy::Enemy(std::string EntityName)
+//	: Entity(EntityName)
+//{
+//}
 
 Enemy::~Enemy()
 {

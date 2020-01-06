@@ -1,7 +1,7 @@
 #include "Rectangle.h"
 #include <algorithm>
 
-static Rectangle* Instance = nullptr;
+//static Rectangle* Instance = nullptr;
 
 Rectangle::Rectangle(int L, int T, int R, int B)
 	:RectangleData(nullptr)
@@ -10,6 +10,13 @@ Rectangle::Rectangle(int L, int T, int R, int B)
 	Right = R;
 	Top = T;
 	Bottom = B;
+}
+
+Rectangle::Rectangle(int width, int height)
+	: RectangleData {nullptr}
+	, width{0}
+	, height{0}
+{
 }
 
 Rectangle::~Rectangle()

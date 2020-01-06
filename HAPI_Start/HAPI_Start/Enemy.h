@@ -1,14 +1,17 @@
 #pragma once
 #include<string>
-#include"Base.h"
+#include "Entity.h"
 
-class Enemy : public Base
+class Enemy : public Entity
 {
 private:
 	int m_Points;
 public:
 	const void TakeDamage() override;
-	Enemy(const std::string e_Name, int e_PosX, int e_PosY, int e_Health, int e_Damage, const ESide e_Side, int e_Points);
+	void Update() override final;
+	ESide GetSide() const override final;
+	Enemy(std::string EntityName, int enemyHealth, int enemyDamage, int enemyPoints);
+	//Enemy(std::string EntityName);
 	~Enemy();
 };
 

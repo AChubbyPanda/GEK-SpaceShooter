@@ -6,21 +6,31 @@ const void Bullet::TakeDamage()
 	m_Health = temp;
 }
 
-bool Bullet::IsDead()
+void Bullet::Update()
 {
-	return true;
 }
 
-Bullet::Bullet(const std::string b_Name, int b_PosX, int b_PosY, int b_Health, int b_Damage, const ESide b_Side)
-	: Entity("", 0,0,0,0, b_Side)
+ESide Bullet::GetSide() const
 {
-	m_Name = b_Name;
-	m_PosX = b_PosX;
-	m_PosY = b_PosY;
-	m_Health = b_Health;
-	m_Damage = b_Damage;
-	m_Side = b_Side;
+	return ESide();
 }
+
+//bool Bullet::IsDead()
+//{
+//	return true;
+//}
+
+Bullet::Bullet(std::string EntityName, int bulletHealth, int bulletDamage)
+	: Entity(EntityName)
+{
+	m_Health = bulletHealth;
+	m_Damage = bulletDamage;
+}
+
+//Bullet::Bullet(std::string EntityName)
+//	: Entity(EntityName)
+//{
+//}
 
 Bullet::~Bullet()
 {

@@ -23,22 +23,17 @@
 using namespace HAPISPACE;
 using namespace std;
 
-World world;
 // Every HAPI program has a HAPI_Main as an entry point
 // When this function exits the program will close down
+
 void HAPI_Main()
 {
-	//Visualisation::Initialise();
-	if (!world.Initialise())
-	{
-		HAPI.UserMessage("World failed to initialise", "ERROR");
-	}
+	World world;
 
-	world.run();
-	Visualisation::Get()->Shutdown();
-	//if (!world.Initialise(1280, 720))
-	//{
-	//	world.run();
-	//	//HAPI.UserMessage("Failed to Initialise", "ERROR");
-	//};
+	world.Run();
+
+	while (HAPI.Update())
+	{
+		world.Update();
+	}
 }

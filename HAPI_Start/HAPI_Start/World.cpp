@@ -2,44 +2,123 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "Enemy.h"
+#include "BackGround.h"
+#include "Visualisation.h"
 #include <memory>
 
-bool World::Initialise()
-{
-	Visualisation::Get()->Initialise();
-	m_Viz = std::make_shared< Visualisation >();
-
-	//Load Level
-	 m_Viz->CreateSprite("Data\\purple.png", "BackGround");
-	 m_Viz->CreateSprite("Data\\PNG\\playerShip2_orange.png", "PlayerGraphic");
-	 m_Viz->CreateSprite("Data\\PNG\\Lasers\\laserRed02.png", "PlayerLaser");
-	 m_Viz->CreateSprite("Data\\PNG\\Enemies\\enemyGreen4.png", "EnemyGraphicGreen");
-	 m_Viz->CreateSprite("Data\\PNG\\Lasers\\laserGreen04.png", "EnemyLaserGreen");
-
+World::World()
+	: m_Viz{nullptr}
 	
-	std::shared_ptr<Entity> backGround = std::make_shared<Entity>("BackGround", 0, 0, 1, 0, ESide::eSideNeutral);
-	//textureID = m_Entity.size() - 1;
-	m_Entity.push_back(backGround);
+{
+}
 
-	//Player* player = new Player ("PlayerGraphic",100,100,20,1, eSidePlayer);
-	std::shared_ptr<Player> player = std::make_shared<Player>("PlayerGraphic", 100, 100, 20, 1, ESide::eSidePlayer);
-	m_Entity.push_back(player);
+World::~World()
+{
+	delete m_Viz;
 
-	for (int i = 0; m_Entity.size() < 102; i++)
+	for (auto p : m_EntityVector)
+	{
+		delete p;
+	};
+}
+
+bool World::LoadLevel()
+{
+	////Load all sprites
+	if (!m_Viz->CreateSprite("PlayerGraphic", "Data\\PNG\\playerShip2_orange.png"))
+	{
+		HAPI.UserMessage("Image Path not found", "Error");
+		return false;
+	};
+	
+	if (!m_Viz->CreateSprite("BackGround", "Data\\purple.png"))
+	{
+		HAPI.UserMessage("Image Path not found", "Error");
+		return false;
+	};
+
+	if (!m_Viz->CreateSprite("PlayerLaser", "Data\\PNG\\Lasers\\laserRed02.png"))
+	{
+		HAPI.UserMessage("Image Path not found", "Error");
+		return false;
+	};
+
+	if (!m_Viz->CreateSprite("EnemyGraphicGreen", "Data\\PNG\\Enemies\\enemyGreen4.png"))
+	{
+		HAPI.UserMessage("Image Path not found", "Error");
+		return false;
+	};
+
+	if (!m_Viz->CreateSprite("EnemyLaserGreen", "Data\\PNG\\Lasers\\laserGreen04.png"))
+	{
+		HAPI.UserMessage("Image Path not found", "Error");
+		return false;
+	};
+
+	Player *newPlayer = new Player("PlayerGraphic", 20,1);
+	m_EntityVector.push_back(newPlayer);
+
+	newPlayer->SetPosition(Vector2(100,100));
+
+	BackGround *newBackGround = new BackGround("BackGround");
+	m_EntityVector.push_back(newBackGround);
+
+	newBackGround->SetPosition(Vector2(0, 0));
+
+	for (int i = 0; m_EntityVector.size() < 102; i++)
 	{
 		//need to look at the spawn location of the bullets
-		std::shared_ptr<Bullet> playerBullet = std::make_shared<Bullet>("PlayerLaser", 0, 0, 1, 0, ESide::eSidePlayer);
-		m_Entity.push_back(playerBullet);
+		Enemy* newEnemy = new Enemy("EnemyGraphicGreen",9,2,rand() % 100 + 25);
+		m_EntityVector.push_back(newEnemy);
+		i++;
+	}
+
+	for (int i = 0; m_EntityVector.size() < 202; i++)
+	{
+		//need to look at the spawn location of the bullets
+		Bullet *playerBullet = new Bullet("PlayerLaser",1, 3);
+		m_EntityVector.push_back(playerBullet);
+		i++;
+	}
+
+	for (int i = 0; m_EntityVector.size() < 302; i++)
+	{
+		//need to look at the spawn location of the bullets
+		Bullet* enemyBullet = new Bullet("EnemyLaserGreen", 1, 2);
+		m_EntityVector.push_back(enemyBullet);
 		i++;
 	}
 
 	return true;
 }
 
-void World::run()
+void World::Update()
 {
-	while (HAPI.Update())
+	for (auto p : m_EntityVector)
 	{
-		m_Viz->Draw(1, 100, 100);
+		p->Update();
+	}
+
+	for (auto p : m_EntityVector)
+	{
+		p->Render(*m_Viz);
 	}
 }
+
+void World::Run()
+{
+	m_Viz = new Visualisation;
+
+	if (!m_Viz->Initialise(720, 720))
+	{
+		return;
+	}
+
+
+	if (!LoadLevel())
+	{
+		return;
+	}
+}
+
+

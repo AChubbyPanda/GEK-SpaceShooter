@@ -1,39 +1,39 @@
-#include "Base.h"
+//#include "Base.h"
+//
+//Base::Base()
+//	: m_PosX{}
+//	, m_PosY{}
+//	, m_Health{}
+//	, m_Damage{}
+//	, m_Width{}
+//	, m_Height{}
+//	//, m_Side{}
+//	//, Dead{false}
+//{
+//}
+//
+//Base::~Base()
+//{
+//}
 
-Base::Base()
-	: m_PosX{}
-	, m_PosY{}
-	, m_Health{}
-	, m_Damage{}
-	, m_Width{}
-	, m_Height{}
-	, m_Side{}
-	, Dead{false}
-{
-}
+//bool Base::SetToDead()
+//{
+//	Dead = true;
+//	return Dead;
+//}
 
-Base::~Base()
-{
-}
+//bool Base::IsDead()
+//{
+//	return Dead;
+//	return false;
+//}
 
-bool Base::SetToDead()
-{
-	Dead = true;
-	return Dead;
-}
-
-bool Base::IsDead()
-{
-	return Dead;
-	return false;
-}
-
-const void Base::TakeDamage()
-{
-	int temp = m_Health - m_Damage;
-	m_Health = temp;
-	if (m_Health <= 0)
-	{
-		SetToDead();
-	}
-}
+//const void Base::TakeDamage()
+//{
+//	int temp = m_Health - m_Damage;
+//	m_Health = temp;
+//	if (m_Health <= 0)
+//	{
+//		SetToDead();
+//	}
+//}

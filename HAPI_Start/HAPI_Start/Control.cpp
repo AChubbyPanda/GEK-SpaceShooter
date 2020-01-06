@@ -14,38 +14,39 @@ void Control::ControlInPut()
 	//{
 	//	if (ControlData.digitalButtons[HK_DIGITAL_DPAD_UP] || ControlData.analogueButtons[HK_ANALOGUE_LEFT_THUMB_Y] > LeftDeadZoneMax)
 	//	{
-	//		-= Speed;
+	//		 m_position.y -= Speed;
 	//	}
 	//	if (ControlData.digitalButtons[HK_DIGITAL_DPAD_DOWN] || ControlData.analogueButtons[HK_ANALOGUE_LEFT_THUMB_Y] < LeftDeadZoneMin)
 	//	{
-	//		 += Speed;
+	//		m_position.x -= Speed;
 	//	}
 	//	if (ControlData.digitalButtons[HK_DIGITAL_DPAD_LEFT] || ControlData.analogueButtons[HK_ANALOGUE_LEFT_THUMB_X] < LeftDeadZoneMin)
 	//	{
-	//		 -= Speed;
+	//		  m_position.y += Speed;
 	//	}
 	//	if (ControlData.digitalButtons[HK_DIGITAL_DPAD_RIGHT] || ControlData.analogueButtons[HK_ANALOGUE_LEFT_THUMB_X] > LeftDeadZoneMax)
 	//	{
-	//		 += Speed;
+	//		 m_position.x += Speed;
 	//	}
 	//}
 
 	////	Keyboard Input 
 	//if (KeyData.scanCode['W'])
 	//{
-	//	 -= Speed;
+	//	 m_position.y -= Speed;
 	//}
 	//if (KeyData.scanCode['A'])
 	//{
-	//	 -= Speed;
+	//	m_position.x -= Speed;
+	//	 
 	//}
 	//if (KeyData.scanCode['S'])
 	//{
-	//	 += Speed;
+	//	 m_position.y += Speed;
 	//}
 	//if (KeyData.scanCode['D'])
 	//{
-	//	 += Speed;
+	//	 m_position.x += Speed;
 	//}
 }
 

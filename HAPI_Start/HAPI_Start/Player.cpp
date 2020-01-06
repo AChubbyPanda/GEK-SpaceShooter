@@ -6,10 +6,10 @@ const void Player::TakeDamage()
 	m_Health = temp;
 }
 
-bool Player::IsDead()
-{
-	return true;
-}
+//bool Player::IsDead()
+//{
+//	return true;
+//}
 
 const int Player::GetScore()
 {
@@ -21,16 +21,21 @@ void Player::GetInPut()
 	return ControlInPut();
 }
 
-Player::Player(const std::string p_Name, int p_PosX, int p_PosY, int p_Health, int p_Damage, const ESide p_Side)
-	:p_Score{ 0 }
-	, Entity("", 0, 0, 0, 0, p_Side)
+void Player::Update()
 {
-	m_Name = p_Name;
-	m_PosX = p_PosX;
-	m_PosY = p_PosY;
-	m_Health = p_Health;
-	m_Damage = p_Damage;
-	m_Side = p_Side;
+}
+
+ESide Player::GetSide() const
+{
+	return ESide::eSidePlayer;
+}
+
+Player::Player(std::string EntityName, int playerHealth, int playerDamage)
+	: Entity(EntityName)
+	, p_Score{ 0 }
+{
+	m_Health = playerHealth;
+	m_Damage = playerDamage;
 }
 
 Player::~Player()
