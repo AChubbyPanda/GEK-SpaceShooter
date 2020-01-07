@@ -7,7 +7,7 @@ Visualisation::Visualisation()
 	: m_ScreenPointer{ nullptr }
 	, m_ScreenWidth{ 0 }
 	, m_ScreenHeight{ 0 }
-	, m_ScreenRect{ 0 , 0 }
+	, m_ScreenRect{ 0 , 0 , 0 , 0 }
 {
 }
 
@@ -36,7 +36,7 @@ bool Visualisation::Initialise(int screenWidth, int screenHeight)
 	m_ScreenWidth = screenHeight;
 	m_ScreenHeight = screenHeight;
 
-	m_ScreenRect = Rectangle(screenWidth, screenHeight);
+	m_ScreenRect = Rectangle(0, 0, screenWidth, screenHeight);
 
 	m_ScreenPointer = HAPI.GetScreenPointer();
 
@@ -120,8 +120,8 @@ void Visualisation::BlitzAlpha(BYTE* Position, int m_ScreenWidth, int m_ScreenHe
 	// Also needs the screen position of the top left corner to blit to
 	/*Rectangle ScreenBox(0, 0, ScreenWidth, ScreenHeight);
 	Rectangle PlayerBox(0, 0, TexWidth, TexHeight);*/
-	Rectangle ScreenBox(m_ScreenWidth, m_ScreenHeight);
-	Rectangle PlayerBox(m_TexWidth, m_TexHeight);
+	Rectangle ScreenBox(M_PosX, M_PosY, m_ScreenWidth, m_ScreenHeight);
+	Rectangle PlayerBox(M_PosY, M_PosY, m_TexWidth, m_TexHeight);
 
 	//This will adjust the rectangle and cut the image when off screen
 	PlayerBox.Translate(PosX, PosY);

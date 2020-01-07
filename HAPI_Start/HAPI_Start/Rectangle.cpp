@@ -5,6 +5,8 @@
 
 Rectangle::Rectangle(int L, int T, int R, int B)
 	:RectangleData(nullptr)
+	, width{ 0 }
+	, height{0}
 {
 	Left = L;
 	Right = R;
@@ -12,12 +14,12 @@ Rectangle::Rectangle(int L, int T, int R, int B)
 	Bottom = B;
 }
 
-Rectangle::Rectangle(int width, int height)
-	: RectangleData {nullptr}
-	, width{0}
-	, height{0}
-{
-}
+//Rectangle::Rectangle(int width, int height)
+//	: RectangleData {nullptr}
+//	, width{0}
+//	, height{0}
+//{
+//}
 
 Rectangle::~Rectangle()
 {

@@ -28,7 +28,7 @@ void Entity::Render(Visualisation& Viz)
 
 Entity::Entity(std::string EntityName) 
 	: m_EntityName(EntityName)
-	, m_TextureRect{ m_TexWidth ,m_TexHeight }
+	, m_TextureRect{ m_PosX, m_PosY, m_TexWidth, m_TexHeight }
 	, m_alive{ true }
 	, m_PosX{ 0 }
 	, m_PosY{ 0 }

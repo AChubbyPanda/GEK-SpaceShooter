@@ -18,6 +18,6 @@ public:
 	void ClipTo(const Rectangle& Other);
 	void Translate(int DX, int DY);
 	Rectangle(int L, int T, int R, int B);
-	Rectangle(int width, int height);
+	//Rectangle(int width, int height);
 	~Rectangle();
 };
