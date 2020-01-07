@@ -7,6 +7,12 @@
 #include "Entity.h"
 
 using namespace HAPISPACE;
+
+struct Positions
+{
+	float x, y, z;
+};
+
 class LoadTexture;
 class Entity;
 
@@ -14,32 +20,32 @@ class Visualisation : public LoadTexture
 {
 private:
 
-	BYTE* m_ScreenPointer;
+	BYTE* screenPointer;
 
 	// Screen size
-	int m_ScreenWidth;
-	int m_ScreenHeight;
-	Rectangle m_ScreenRect;
-	std::unordered_map<std::string, LoadTexture*> m_EntityMap;
+	int screenWidth;
+	int screenHeight;
+	HAPI_TColour colour;
+	Rectangle screenRect;
+	std::unordered_map<std::string, LoadTexture*> entityMap;
 
-	void ClearToColour(HAPI_TColour Col);
-	void ClearToGray(BYTE grey = 0);
-	void SetPixel(BYTE* Screen, int v_PosX, int v_PosY, int v_ScreenWidth, HAPI_TColour Col);
+	void clearToColour(BYTE* screen, HAPI_TColour Col, int width, int height);
+	/*void ClearToGray(BYTE grey = 0);*/
+	void setPixel(BYTE* ScreenPointer, int x, int y, int width, HAPI_TColour col);
 
 	//bool LoadTexture(const std::string& FileName, BYTE* TexturePointer);
 
-	void Blit(BYTE* Screen, int m_ScreenWidth, int m_ScreenHeight, int PosX, int PosY, BYTE* TexturePointer);
-	void BlitzAlpha(BYTE* Position, int m_ScreenWidth, int m_ScreenHeight, int PosX, int PosY, BYTE* TexturePointer);
+	void blit(BYTE* screen, int width, int height, int x, int y, BYTE* texturePointer);
+	void blitzAlpha(BYTE* screen, int width, int height, int x, int y, BYTE* texturePointer);
 	
 public:
-	//std::map< std::string, int > mapLocation;
-	bool CreateSprite(const std::string& Name, const std::string& FileName);
-	void Draw(const std::string Name, int PosX, int PosY);
-
-	bool Initialise(int m_ScreenWidth, int m_ScreenHeight);
-	static void Shutdown();
 	Visualisation();
 	~Visualisation();
-
+	bool vizInitialise(int width, int height);
+	static void vizShutdown();
+	void vizUpdate();
+	//std::map< std::string, int > mapLocation;
+	bool createSprite(const std::string& name, const std::string& fileName);
+	void vizDraw(const std::string name, int x, int y);
 };
 

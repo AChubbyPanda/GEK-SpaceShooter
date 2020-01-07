@@ -4,10 +4,11 @@
 #include <map>
 
 Visualisation::Visualisation()
-	: m_ScreenPointer{ nullptr }
-	, m_ScreenWidth{ 0 }
-	, m_ScreenHeight{ 0 }
-	, m_ScreenRect{ 0 , 0 , 0 , 0 }
+	: screenPointer{ nullptr }
+	, screenWidth{ 0 }
+	, screenHeight{ 0 }
+	, screenRect{ 0 , 0 , 0 , 0 }
+	, colour{ HAPI_TColour::BLACK }
 {
 }
 
@@ -19,130 +20,146 @@ Visualisation::~Visualisation()
 		delete m_VisStorage[i];
 	}*/
 
-	for (auto& p : m_EntityMap)
+	for (auto& p : entityMap)
 	{
 		delete p.second;
 	}
 }
 
-bool Visualisation::Initialise(int screenWidth, int screenHeight)
+bool Visualisation::vizInitialise(int width, int height)
 {
-	if (!HAPI.Initialise(screenWidth, screenHeight, "Maven, Neil, V8039070"))
+	if (!HAPI.Initialise(width, height, "Maven, Neil, V8039070"))
 	{
 		std::cerr << "Could not Initialise " << std::endl;
 		return false;
 	}
 
-	m_ScreenWidth = screenHeight;
-	m_ScreenHeight = screenHeight;
+	screenWidth = width;
+	screenHeight = height;
 
-	m_ScreenRect = Rectangle(0, 0, screenWidth, screenHeight);
+	screenRect = Rectangle(0, 0, width, height);
 
-	m_ScreenPointer = HAPI.GetScreenPointer();
+	screenPointer = HAPI.GetScreenPointer();
 
 	HAPI.SetShowFPS(true);
 
 	return true;
 }
 
-void Visualisation::Shutdown()
+void Visualisation::vizShutdown()
 {
 	//delete Instance;
 }
 
-void Visualisation::ClearToColour(HAPI_TColour Col)
+void Visualisation::clearToColour(BYTE* screen, HAPI_TColour col, int width, int height)
 {
-	HAPI_TColour col{ HAPI_TColour::BLACK };
+	screenPointer = screen;
+	colour = col;
+	screenWidth = width;
+	screenHeight = height;
 
-	BYTE* Temp{ m_ScreenPointer };
-	for (int i = 0; i < m_ScreenWidth * m_ScreenHeight; i++)
+	BYTE* Temp{ screen };
+	for (int i = 0; i < width * height; i++)
 	{
-		memcpy(Temp, &Col, 4);
+		memcpy(Temp, &col, 4);
 		Temp += 4;
 	}
 }
 
-void Visualisation::ClearToGray(BYTE grey)
+//void Visualisation::ClearToGray(BYTE grey)
+//{
+//	memset(m_ScreenPointer, grey, ((int64_t)m_ScreenWidth * (int64_t)m_ScreenHeight) * 4);
+//}
+
+void Visualisation::setPixel(BYTE* screen, int x, int y, int width, HAPI_TColour col)
 {
-	memset(m_ScreenPointer, grey, ((int64_t)m_ScreenWidth * (int64_t)m_ScreenHeight) * 4);
+	screenPointer = screen;
+	screenWidth = width;
+	colour = col;
+	
+	unsigned int OffSet = (x + y * width) * 4;
+	memcpy(screenPointer + OffSet, &col, sizeof(col));
 }
 
-void Visualisation::SetPixel(BYTE* Screen, int v_PosX, int v_PosY, int ScreenWidth, HAPI_TColour Col)
+void Visualisation::vizUpdate()
 {
-	unsigned int OffSet = (v_PosX + v_PosY * ScreenWidth) * 4;
-	memcpy(Screen + OffSet, &Col, sizeof(Col));
+	Visualisation::clearToColour(screenPointer, colour, screenWidth, screenHeight);
 }
 
-bool Visualisation::CreateSprite(const std::string& Name, const std::string& FileName)
+bool Visualisation::createSprite(const std::string& name, const std::string& fileName)
 {
-	LoadTexture* tex = LoadTexture::CreateTexture(Name, FileName);
+	LoadTexture* tex = LoadTexture::createTexture(name, fileName);
 
-	m_EntityMap[Name] = tex;
+	entityMap[name] = tex;
 
 	return true;
 }
 
-void Visualisation::Draw(const std::string Name, int PosX, int PosY)
+void Visualisation::vizDraw(const std::string name, int x, int y)
 {  
-	for (auto p : m_EntityMap)
+	for (auto p : entityMap)
 	{
-		if (p.first == Name)
+		if (p.first == name)
 		{
 			LoadTexture *tex = p.second;
 
-			BlitzAlpha(m_ScreenPointer, m_ScreenWidth, m_ScreenHeight, PosX, PosY, tex->m_TexturePointer);
+			blitzAlpha(screenPointer, screenWidth, screenHeight, x, y, tex->texturePointer);
 		}
 	}
 }
 
-void Visualisation::Blit(BYTE* Screen, int m_ScreenWidth, int m_ScreenHeight, int PosX, int PosY, BYTE* TexturePointer)
+void Visualisation::blit(BYTE* screen, int width, int height, int x, int y, BYTE* texturePointer)
 {
-	BYTE* TempPos = Screen + (((int64_t)PosX + (int64_t)PosY * m_ScreenWidth)) * 4;
-	BYTE* TempSrc = TexturePointer;
+	BYTE* TempPos = screen + (((int64_t)x + (int64_t)y * width)) * 4;
+	BYTE* TempSrc = texturePointer;
 
-	for (int y = 0; y < m_TexHeight; y++)
+	for (int y = 0; y < texHeight; y++)
 	{
-		memcpy(TempPos, TempSrc, (int64_t)m_TexWidth * 4);
+		memcpy(TempPos, TempSrc, (int64_t)texWidth * 4);
 		// Move source pointer to next line
-		TempSrc += (int64_t)m_TexWidth * 4;
+		TempSrc += (int64_t)texWidth * 4;
 		// Move destination pointer to next line
-		TempPos += (int64_t)m_ScreenHeight * 4;
+		TempPos += (int64_t)height * 4;
 	}
 }
 
-void Visualisation::BlitzAlpha(BYTE* Position, int m_ScreenWidth, int m_ScreenHeight, int PosX, int PosY, BYTE* TexturePointer)
+void Visualisation::blitzAlpha(BYTE* screen, int width, int height, int x, int y, BYTE* texturePointer)
 {
-	int M_PosX(PosX);
-	int M_PosY(PosY);
+	screenPointer = screen;
+	screenWidth = width;
+	screenHeight = height;
+
+	int m_PosX(x);
+	int m_PosY(y);
 
 	// Passed in the destination (normally the screen) pointer and rectangle and the      
 	// source (a texture) pointer and rectangle
 	// Also needs the screen position of the top left corner to blit to
 	/*Rectangle ScreenBox(0, 0, ScreenWidth, ScreenHeight);
 	Rectangle PlayerBox(0, 0, TexWidth, TexHeight);*/
-	Rectangle ScreenBox(M_PosX, M_PosY, m_ScreenWidth, m_ScreenHeight);
-	Rectangle PlayerBox(M_PosY, M_PosY, m_TexWidth, m_TexHeight);
+	Rectangle ScreenBox(m_PosX, m_PosY, width, height);
+	Rectangle PlayerBox(m_PosY, m_PosY, texWidth, texHeight);
 
 	//This will adjust the rectangle and cut the image when off screen
-	PlayerBox.Translate(PosX, PosY);
+	PlayerBox.Translate(x, y);
 
 	PlayerBox.ClipTo(ScreenBox);
 	//This adds the image back when it comes back on screen
-	PlayerBox.Translate(-PosX, -PosY);
+	PlayerBox.Translate(-x, -y);
 
 	//inline if statements to check edges of the screen to stop a crash
-	M_PosX = M_PosX < 0 ? 0 : M_PosX;
-	M_PosY = M_PosY < 0 ? 0 : M_PosY;
+	m_PosX = m_PosX < 0 ? 0 : m_PosX;
+	m_PosY = m_PosY < 0 ? 0 : m_PosY;
 
 	if (PlayerBox.CompletelyOutside(ScreenBox))
 	{
 		return;
 	}
-	BYTE* TempPos = Position + (((int64_t)M_PosX + (int64_t)M_PosY * m_ScreenWidth)) * 4;
-	BYTE* TempSrc = TexturePointer + (((int64_t)PlayerBox.Left + (int64_t)PlayerBox.Top * m_TexWidth)) * 4;
+	BYTE* TempPos = screen + (((int64_t)m_PosX + (int64_t)m_PosY * width)) * 4;
+	BYTE* TempSrc = texturePointer + (((int64_t)PlayerBox.Left + (int64_t)PlayerBox.Top * texWidth)) * 4;
 
 	int EndOfLineDestOffset = (ScreenBox.Width() - PlayerBox.Width()) * 4;
-	int EndOfLineSrcOffset = (m_TexWidth - PlayerBox.Width()) * 4;
+	int EndOfLineSrcOffset = (texWidth - PlayerBox.Width()) * 4;
 
 	for (int y = 0; y < PlayerBox.Height(); y++)
 	{

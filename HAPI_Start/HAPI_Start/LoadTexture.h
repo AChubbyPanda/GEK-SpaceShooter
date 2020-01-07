@@ -8,10 +8,10 @@ class LoadTexture
 	bool Load(const std::string& FileName);
 	
 protected:
-	int m_TexWidth;
-	int m_TexHeight;
+	int texWidth;
+	int texHeight;
 	
 public:
-	BYTE* m_TexturePointer;
-	static LoadTexture* CreateTexture(const std::string& Name, const std::string& FileName);
+	BYTE* texturePointer;
+	static LoadTexture* createTexture(const std::string& name, const std::string& fileName);
 };

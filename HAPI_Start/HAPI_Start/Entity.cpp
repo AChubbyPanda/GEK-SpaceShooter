@@ -14,7 +14,7 @@ void Entity::SetPosition(Vector2 newPos)
 
 void Entity::Render(Visualisation& Viz)
 {
-	Viz.Draw(m_EntityName, (int)m_Position.x, (int)m_Position.y);
+	Viz.vizDraw(m_EntityName, (int)m_Position.x, (int)m_Position.y);
 }
 
 //Entity::Entity(const std::string e_Name, int e_PosX, int e_PosY, int e_Health, int e_Damage, const ESide e_Side)
@@ -28,7 +28,7 @@ void Entity::Render(Visualisation& Viz)
 
 Entity::Entity(std::string EntityName) 
 	: m_EntityName(EntityName)
-	, m_TextureRect{ m_PosX, m_PosY, m_TexWidth, m_TexHeight }
+	, m_TextureRect{ m_PosX, m_PosY, texWidth, texHeight }
 	, m_alive{ true }
 	, m_PosX{ 0 }
 	, m_PosY{ 0 }

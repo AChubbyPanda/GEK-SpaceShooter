@@ -25,31 +25,31 @@ World::~World()
 bool World::LoadLevel()
 {
 	////Load all sprites
-	if (!m_Viz->CreateSprite("PlayerGraphic", "Data\\PNG\\playerShip2_orange.png"))
+	if (!m_Viz->createSprite("PlayerGraphic", "Data\\PNG\\playerShip2_orange.png"))
 	{
 		HAPI.UserMessage("Image Path not found", "Error");
 		return false;
 	};
 	
-	if (!m_Viz->CreateSprite("BackGround", "Data\\purple.png"))
+	if (!m_Viz->createSprite("BackGround", "Data\\purple.png"))
 	{
 		HAPI.UserMessage("Image Path not found", "Error");
 		return false;
 	};
 
-	if (!m_Viz->CreateSprite("PlayerLaser", "Data\\PNG\\Lasers\\laserRed02.png"))
+	if (!m_Viz->createSprite("PlayerLaser", "Data\\PNG\\Lasers\\laserRed02.png"))
 	{
 		HAPI.UserMessage("Image Path not found", "Error");
 		return false;
 	};
 
-	if (!m_Viz->CreateSprite("EnemyGraphicGreen", "Data\\PNG\\Enemies\\enemyGreen4.png"))
+	if (!m_Viz->createSprite("EnemyGraphicGreen", "Data\\PNG\\Enemies\\enemyGreen4.png"))
 	{
 		HAPI.UserMessage("Image Path not found", "Error");
 		return false;
 	};
 
-	if (!m_Viz->CreateSprite("EnemyLaserGreen", "Data\\PNG\\Lasers\\laserGreen04.png"))
+	if (!m_Viz->createSprite("EnemyLaserGreen", "Data\\PNG\\Lasers\\laserGreen04.png"))
 	{
 		HAPI.UserMessage("Image Path not found", "Error");
 		return false;
@@ -94,6 +94,8 @@ bool World::LoadLevel()
 
 void World::Update()
 {
+	m_Viz->vizUpdate();
+
 	for (auto p : m_EntityVector)
 	{
 		p->Update();
@@ -109,7 +111,7 @@ void World::Run()
 {
 	m_Viz = new Visualisation;
 
-	if (!m_Viz->Initialise(720, 720))
+	if (!m_Viz->vizInitialise(720, 720))
 	{
 		return;
 	}

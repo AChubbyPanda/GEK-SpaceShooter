@@ -1,8 +1,8 @@
 #include "LoadTexture.h"
 
-bool LoadTexture::Load(const std::string& FileName)
+bool LoadTexture::Load(const std::string& fileName)
 {
-	if (!HAPI.LoadTexture(FileName, &m_TexturePointer, m_TexWidth, m_TexHeight))
+	if (!HAPI.LoadTexture(fileName, &texturePointer, texWidth, texHeight))
 	{
 		HAPI.UserMessage("ERROR ", "Texture Failed to load ");
 		return false;
@@ -10,11 +10,11 @@ bool LoadTexture::Load(const std::string& FileName)
 	return true;
 }
 
-LoadTexture* LoadTexture::CreateTexture(const std::string& Name, const std::string& FileName)
+LoadTexture* LoadTexture::createTexture(const std::string& name, const std::string& fileName)
 {
 	LoadTexture* tex = new LoadTexture();
 
-	if (!tex->Load(FileName))
+	if (!tex->Load(fileName))
 	{
 		delete tex;
 		return false;
