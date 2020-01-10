@@ -1,7 +1,7 @@
 #include "BackGround.h"
 
-BackGround::BackGround(std::string EntityName)
-	: Entity(EntityName)
+BackGround::BackGround(std::string entityName)
+	: Entity(entityName)
 {
 }
 
@@ -9,15 +9,15 @@ BackGround::~BackGround()
 {
 }
 
-const void BackGround::TakeDamage()
+const void BackGround::takeDamage()
 {
 }
 
-void BackGround::Update()
+void BackGround::update()
 {
 }
 
-ESide BackGround::GetSide() const
+ESide BackGround::getSide() const
 {
 	return ESide::eSideNeutral;
 }

@@ -7,117 +7,116 @@
 #include <memory>
 
 World::World()
-	: m_Viz{nullptr}
+	: viz{nullptr}
 	
 {
 }
 
 World::~World()
 {
-	delete m_Viz;
+	delete viz;
 
-	for (auto p : m_EntityVector)
+	for (auto p : entityVector)
 	{
 		delete p;
 	};
 }
 
-bool World::LoadLevel()
+bool World::loadLevel()
 {
 	////Load all sprites
-	if (!m_Viz->createSprite("PlayerGraphic", "Data\\PNG\\playerShip2_orange.png"))
+	if (!viz->createSprite("PlayerGraphic", "Data\\PNG\\playerShip2_orange.png"))
 	{
 		HAPI.UserMessage("Image Path not found", "Error");
 		return false;
 	};
 	
-	if (!m_Viz->createSprite("BackGround", "Data\\purple.png"))
+	if (!viz->createSprite("BackGround", "Data\\purple.png"))
 	{
 		HAPI.UserMessage("Image Path not found", "Error");
 		return false;
 	};
 
-	if (!m_Viz->createSprite("PlayerLaser", "Data\\PNG\\Lasers\\laserRed02.png"))
+	if (!viz->createSprite("PlayerLaser", "Data\\PNG\\Lasers\\laserRed02.png"))
 	{
 		HAPI.UserMessage("Image Path not found", "Error");
 		return false;
 	};
 
-	if (!m_Viz->createSprite("EnemyGraphicGreen", "Data\\PNG\\Enemies\\enemyGreen4.png"))
+	if (!viz->createSprite("EnemyGraphicGreen", "Data\\PNG\\Enemies\\enemyGreen4.png"))
 	{
 		HAPI.UserMessage("Image Path not found", "Error");
 		return false;
 	};
 
-	if (!m_Viz->createSprite("EnemyLaserGreen", "Data\\PNG\\Lasers\\laserGreen04.png"))
+	if (!viz->createSprite("EnemyLaserGreen", "Data\\PNG\\Lasers\\laserGreen04.png"))
 	{
 		HAPI.UserMessage("Image Path not found", "Error");
 		return false;
 	};
+
+	BackGround* newBackGround = new BackGround("BackGround");
+	entityVector.push_back(newBackGround);
+	newBackGround->setPosition(Vector2(0, 0));
+	newBackGround->setAlive();
 
 	Player *newPlayer = new Player("PlayerGraphic", 20,1);
-	m_EntityVector.push_back(newPlayer);
+	entityVector.push_back(newPlayer);
+	newPlayer->setPosition(Vector2(100, 100));
+	newPlayer->setAlive();
 
-	newPlayer->SetPosition(Vector2(100,100));
-
-	BackGround *newBackGround = new BackGround("BackGround");
-	m_EntityVector.push_back(newBackGround);
-
-	newBackGround->SetPosition(Vector2(0, 0));
-
-	for (int i = 0; m_EntityVector.size() < 102; i++)
+	for (int i = 0; entityVector.size() < 102; i++)
 	{
-		//need to look at the spawn location of the bullets
 		Enemy* newEnemy = new Enemy("EnemyGraphicGreen",9,2,rand() % 100 + 25);
-		m_EntityVector.push_back(newEnemy);
+		entityVector.push_back(newEnemy);
 		i++;
 	}
 
-	for (int i = 0; m_EntityVector.size() < 202; i++)
+	for (int i = 0; entityVector.size() < 202; i++)
 	{
 		//need to look at the spawn location of the bullets
 		Bullet *playerBullet = new Bullet("PlayerLaser",1, 3);
-		m_EntityVector.push_back(playerBullet);
+		entityVector.push_back(playerBullet);
 		i++;
 	}
 
-	for (int i = 0; m_EntityVector.size() < 302; i++)
+	for (int i = 0; entityVector.size() < 302; i++)
 	{
 		//need to look at the spawn location of the bullets
 		Bullet* enemyBullet = new Bullet("EnemyLaserGreen", 1, 2);
-		m_EntityVector.push_back(enemyBullet);
+		entityVector.push_back(enemyBullet);
 		i++;
 	}
 
 	return true;
 }
 
-void World::Update()
+void World::update()
 {
-	m_Viz->vizUpdate();
+	viz->vizUpdate();
 
-	for (auto p : m_EntityVector)
+	for (auto p : entityVector)
 	{
-		p->Update();
+	p->update();
 	}
 
-	for (auto p : m_EntityVector)
+	for (auto p : entityVector)
 	{
-		p->Render(*m_Viz);
+		p->render(*viz);
 	}
 }
 
-void World::Run()
+void World::run()
 {
-	m_Viz = new Visualisation;
+	viz = new Visualisation;
 
-	if (!m_Viz->vizInitialise(720, 720))
+	if (!viz->vizInitialise(1536, 720))
 	{
 		return;
 	}
 
 
-	if (!LoadLevel())
+	if (!loadLevel())
 	{
 		return;
 	}

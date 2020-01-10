@@ -1,16 +1,16 @@
 #include "Bullet.h"
 
-const void Bullet::TakeDamage()
+const void Bullet::takeDamage()
 {
 	int temp = m_Health - m_Damage;
 	m_Health = temp;
 }
 
-void Bullet::Update()
+void Bullet::update()
 {
 }
 
-ESide Bullet::GetSide() const
+ESide Bullet::getSide() const
 {
 	return ESide();
 }
@@ -20,8 +20,8 @@ ESide Bullet::GetSide() const
 //	return true;
 //}
 
-Bullet::Bullet(std::string EntityName, int bulletHealth, int bulletDamage)
-	: Entity(EntityName)
+Bullet::Bullet(std::string entityName, int bulletHealth, int bulletDamage)
+	: Entity(entityName)
 {
 	m_Health = bulletHealth;
 	m_Damage = bulletDamage;

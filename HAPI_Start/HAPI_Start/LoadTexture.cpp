@@ -1,6 +1,6 @@
 #include "LoadTexture.h"
 
-bool LoadTexture::Load(const std::string& fileName)
+bool Texture::Load(const std::string& fileName)
 {
 	if (!HAPI.LoadTexture(fileName, &texturePointer, texWidth, texHeight))
 	{
@@ -10,9 +10,9 @@ bool LoadTexture::Load(const std::string& fileName)
 	return true;
 }
 
-LoadTexture* LoadTexture::createTexture(const std::string& name, const std::string& fileName)
+Texture* Texture::createTexture(const std::string& name, const std::string& fileName)
 {
-	LoadTexture* tex = new LoadTexture();
+	Texture* tex = new Texture();
 
 	if (!tex->Load(fileName))
 	{

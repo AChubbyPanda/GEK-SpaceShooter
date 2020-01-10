@@ -8,11 +8,10 @@ class Bullet : public Entity
 private:
 
 public:
-	const void TakeDamage() override final;
-	void Update() override final;
-	ESide GetSide() const override final;
-	//bool IsDead() override;
-	Bullet(std::string EntityName, int bulletHealth, int bulletDamage);
+	const void takeDamage() override final;
+	void update() override final;
+	ESide getSide() const override final;
+	Bullet(std::string entityName, int bulletHealth, int bulletDamage);
 	//Bullet(std::string EntityName);
 	~Bullet();
 };

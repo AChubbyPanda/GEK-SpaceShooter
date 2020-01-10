@@ -5,13 +5,12 @@
 class Enemy : public Entity
 {
 private:
-	int m_Points;
+	int points;
 public:
-	const void TakeDamage() override;
-	void Update() override final;
-	ESide GetSide() const override final;
-	Enemy(std::string EntityName, int enemyHealth, int enemyDamage, int enemyPoints);
-	//Enemy(std::string EntityName);
+	const void takeDamage() override;
+	void update() override final;
+	ESide getSide() const override final;
+	Enemy(std::string entityName, int enemyHealth, int enemyDamage, int enemyPoints);
 	~Enemy();
 };
 

@@ -2,24 +2,24 @@
 #define Player_h //This is used when more than one header file is compiling the same header file.
 
 #include "Entity.h"
-#include "Control.h"
 
 #include <string>
 
-class Player : public Entity, public Control
+class Player : public Entity
 {
 private:
-	int p_Score;
+	int score;
+	int speed;
 
 public:
-	const void TakeDamage() override;
-	const int GetScore();
-	void GetInPut();
+	const void takeDamage() override;
+	const int getScore();
 
-	void Update() override final;
-	ESide GetSide() const override final;
-
-	Player(std::string EntityName,  int playerHealth, int playerDamage);
+	void playerMovement();
+	void fireBullet(std::string entityName);
+	void update() override final;
+	ESide getSide() const override final;
+	Player(std::string entityName, int playerHealth, int playerDamage);
 	~Player();
 };
 #endif // Player_h //This is used when more than one header file is compiling the same header file.

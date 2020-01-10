@@ -88,7 +88,7 @@ void Visualisation::vizUpdate()
 
 bool Visualisation::createSprite(const std::string& name, const std::string& fileName)
 {
-	LoadTexture* tex = LoadTexture::createTexture(name, fileName);
+	Texture* tex = Texture::createTexture(name, fileName);
 
 	entityMap[name] = tex;
 
@@ -101,69 +101,69 @@ void Visualisation::vizDraw(const std::string name, int x, int y)
 	{
 		if (p.first == name)
 		{
-			LoadTexture *tex = p.second;
+			Texture *tex = p.second;
 
-			blitzAlpha(screenPointer, screenWidth, screenHeight, x, y, tex->texturePointer);
+			blitzAlpha(screenPointer, screenWidth, screenHeight, x, y, tex);
 		}
 	}
 }
 
-void Visualisation::blit(BYTE* screen, int width, int height, int x, int y, BYTE* texturePointer)
-{
-	BYTE* TempPos = screen + (((int64_t)x + (int64_t)y * width)) * 4;
-	BYTE* TempSrc = texturePointer;
+//void Visualisation::blit(BYTE* screen, int width, int height, int x, int y, Texture* tex)
+//{
+//	BYTE* TempPos = screen + (((int64_t)x + (int64_t)y * width)) * 4;
+//	BYTE* TempSrc = tex->texturePointer;
+//
+//	for (int y = 0; y < tex->texHeight; y++)
+//	{
+//		memcpy(TempPos, TempSrc, (int64_t)tex->texWidth * 4);
+//		// Move source pointer to next line
+//		TempSrc += (int64_t)tex->texWidth * 4;
+//		// Move destination pointer to next line
+//		TempPos += (int64_t)height * 4;
+//	}
+//}
 
-	for (int y = 0; y < texHeight; y++)
-	{
-		memcpy(TempPos, TempSrc, (int64_t)texWidth * 4);
-		// Move source pointer to next line
-		TempSrc += (int64_t)texWidth * 4;
-		// Move destination pointer to next line
-		TempPos += (int64_t)height * 4;
-	}
-}
-
-void Visualisation::blitzAlpha(BYTE* screen, int width, int height, int x, int y, BYTE* texturePointer)
+void Visualisation::blitzAlpha(BYTE* screen, int width, int height, int x, int y, Texture* tex)
 {
 	screenPointer = screen;
 	screenWidth = width;
 	screenHeight = height;
 
-	int m_PosX(x);
-	int m_PosY(y);
+	int posX(x);
+	int posY(y);
 
 	// Passed in the destination (normally the screen) pointer and rectangle and the      
 	// source (a texture) pointer and rectangle
 	// Also needs the screen position of the top left corner to blit to
 	/*Rectangle ScreenBox(0, 0, ScreenWidth, ScreenHeight);
 	Rectangle PlayerBox(0, 0, TexWidth, TexHeight);*/
-	Rectangle ScreenBox(m_PosX, m_PosY, width, height);
-	Rectangle PlayerBox(m_PosY, m_PosY, texWidth, texHeight);
+	Rectangle ScreenBox(0, 0, width, height);
+	Rectangle PlayerBox(0, 0, tex->texWidth, tex->texHeight);
 
 	//This will adjust the rectangle and cut the image when off screen
-	PlayerBox.Translate(x, y);
+	PlayerBox.translate(posX, posY);
 
-	PlayerBox.ClipTo(ScreenBox);
+	PlayerBox.clipTo(ScreenBox);
 	//This adds the image back when it comes back on screen
-	PlayerBox.Translate(-x, -y);
+	PlayerBox.translate(-posX, -posY);
 
 	//inline if statements to check edges of the screen to stop a crash
-	m_PosX = m_PosX < 0 ? 0 : m_PosX;
-	m_PosY = m_PosY < 0 ? 0 : m_PosY;
+	posX = posX < 0 ? 0 : posX;
+	posY = posY < 0 ? 0 : posY;
 
-	if (PlayerBox.CompletelyOutside(ScreenBox))
+	if (PlayerBox.completelyOutside(ScreenBox))
 	{
 		return;
 	}
-	BYTE* TempPos = screen + (((int64_t)m_PosX + (int64_t)m_PosY * width)) * 4;
-	BYTE* TempSrc = texturePointer + (((int64_t)PlayerBox.Left + (int64_t)PlayerBox.Top * texWidth)) * 4;
+	BYTE* TempPos = screen + (((int64_t)posX + (int64_t)posY * width)) * 4;
+	BYTE* TempSrc = tex->texturePointer + (((int64_t)PlayerBox.left + (int64_t)PlayerBox.top * tex->texWidth)) * 4;
 
-	int EndOfLineDestOffset = (ScreenBox.Width() - PlayerBox.Width()) * 4;
-	int EndOfLineSrcOffset = (texWidth - PlayerBox.Width()) * 4;
+	int EndOfLineDestOffset = (ScreenBox.getWidth() - PlayerBox.getWidth()) * 4;
+	int EndOfLineSrcOffset = (tex->texWidth - PlayerBox.getWidth()) * 4;
 
-	for (int y = 0; y < PlayerBox.Height(); y++)
+	for (int y = 0; y < PlayerBox.getHeight(); y++)
 	{
-		for (int x = 0; x < PlayerBox.Width(); x++)
+		for (int x = 0; x < PlayerBox.getWidth(); x++)
 		{
 			// remember this needs to contain the texture 
 			BYTE blue = TempSrc[0];

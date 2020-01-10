@@ -13,10 +13,10 @@ struct Positions
 	float x, y, z;
 };
 
-class LoadTexture;
+class Texture;
 class Entity;
 
-class Visualisation : public LoadTexture 
+class Visualisation 
 {
 private:
 
@@ -27,16 +27,14 @@ private:
 	int screenHeight;
 	HAPI_TColour colour;
 	Rectangle screenRect;
-	std::unordered_map<std::string, LoadTexture*> entityMap;
+	std::unordered_map<std::string, Texture*> entityMap;
 
 	void clearToColour(BYTE* screen, HAPI_TColour Col, int width, int height);
 	/*void ClearToGray(BYTE grey = 0);*/
 	void setPixel(BYTE* ScreenPointer, int x, int y, int width, HAPI_TColour col);
 
-	//bool LoadTexture(const std::string& FileName, BYTE* TexturePointer);
-
-	void blit(BYTE* screen, int width, int height, int x, int y, BYTE* texturePointer);
-	void blitzAlpha(BYTE* screen, int width, int height, int x, int y, BYTE* texturePointer);
+	//void blit(BYTE* screen, int width, int height, int x, int y, Texture* tex);
+	void blitzAlpha(BYTE* screen, int width, int height, int x, int y, Texture* tex);
 	
 public:
 	Visualisation();

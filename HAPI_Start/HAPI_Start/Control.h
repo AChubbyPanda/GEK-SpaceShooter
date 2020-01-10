@@ -14,14 +14,14 @@ private:
 
 	int Speed = 1;
 
-	const int LeftDeadZoneMax = 8000;
-	const int LeftDeadZoneMin = -8000;
+	const int leftDeadZoneMax = 8000;
+	const int leftDeadZoneMin = -8000;
 
 public:
-	void ControlInPut();
+	void controlInPut();
 
 protected:
-	void GetInPut();
+	void getInPut();
 	~Control();
 };
 #endif // Control_h //This is used when more than one header file is compiling the same header file.

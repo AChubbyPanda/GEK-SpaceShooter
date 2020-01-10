@@ -6,18 +6,17 @@ using namespace HAPISPACE;
 class Rectangle
 {
 private:
-	BYTE* RectangleData;
+	BYTE* rectangleData;
 	int width;
 	int height;
 public:
-	int Left{ 0 }, Right{ 0 }, Top{ 0 }, Bottom{ 0 };
-	int Width() const { return Right - Left; };
-	int Height() const { return Bottom - Top; };
+	int left{ 0 }, right{ 0 }, top{ 0 }, bottom{ 0 };
+	int getWidth() const { return right - left; };
+	int getHeight() const { return bottom - top; };
 
-	bool CompletelyOutside(const Rectangle& Other) const;
-	void ClipTo(const Rectangle& Other);
-	void Translate(int DX, int DY);
+	bool completelyOutside(const Rectangle& Other) const;
+	void clipTo(const Rectangle& Other);
+	void translate(int DX, int DY);
 	Rectangle(int L, int T, int R, int B);
-	//Rectangle(int width, int height);
 	~Rectangle();
 };

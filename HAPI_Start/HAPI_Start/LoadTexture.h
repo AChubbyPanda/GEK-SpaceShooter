@@ -3,15 +3,13 @@
 
 using namespace HAPISPACE;
 
-class LoadTexture
+class Texture
 {
 	bool Load(const std::string& FileName);
 	
-protected:
-	int texWidth;
-	int texHeight;
-	
 public:
 	BYTE* texturePointer;
-	static LoadTexture* createTexture(const std::string& name, const std::string& fileName);
+	int texWidth;
+	int texHeight;
+	static Texture* createTexture(const std::string& name, const std::string& fileName);
 };

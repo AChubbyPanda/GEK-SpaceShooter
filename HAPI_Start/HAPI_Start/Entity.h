@@ -17,12 +17,13 @@ enum class ESide
 
 class Visualisation;
 
-class Entity : public LoadTexture
+class Entity : public Texture
 
 {
 private:
-	Rectangle m_TextureRect;
-	
+	Rectangle textureRect;
+	bool m_Alive;
+
 protected:
 	int m_PosX;
 	int m_PosY;
@@ -32,16 +33,15 @@ protected:
 
 	Vector2 m_Position;
 	std::string m_EntityName;
-	bool m_alive;
 
 public:
-	void SetPosition(Vector2 newPos);
+	void setPosition(Vector2 newPos);
 	//void Render(const Rectangle& screenRect, BYTE screen, int posX, int posY);
-	const virtual void TakeDamage() = 0;
-
-	void Render(Visualisation& Viz);
-	virtual void Update() = 0;
-	virtual ESide GetSide() const = 0;
+	const virtual void takeDamage() = 0;
+	void render(Visualisation& Viz);
+	virtual void update() = 0;
+	virtual ESide getSide() const = 0;
+	void setAlive();
 
 	//Entity(const std::string e_Name, int e_PosX, int e_PosY, int e_Health, int e_Damage, const ESide e_Side);
 	Entity(std::string spriteName);

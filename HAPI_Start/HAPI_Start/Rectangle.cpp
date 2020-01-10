@@ -3,58 +3,51 @@
 
 //static Rectangle* Instance = nullptr;
 
-Rectangle::Rectangle(int L, int T, int R, int B)
-	:RectangleData(nullptr)
+Rectangle::Rectangle(int l, int t, int r, int b)
+	:rectangleData(nullptr)
 	, width{ 0 }
-	, height{0}
+	, height{ 0 }
 {
-	Left = L;
-	Right = R;
-	Top = T;
-	Bottom = B;
+	left = l;
+	right = r;
+	top = t;
+	bottom = b;
 }
-
-//Rectangle::Rectangle(int width, int height)
-//	: RectangleData {nullptr}
-//	, width{0}
-//	, height{0}
-//{
-//}
 
 Rectangle::~Rectangle()
 {
-	delete RectangleData;
+	delete rectangleData;
 }
 
-bool Rectangle::CompletelyOutside(const Rectangle& Other) const
+bool Rectangle::completelyOutside(const Rectangle& other) const
 {
-	if (Other.Right < Left)
+	if (other.right < left)
 		return true;
 
-	if (Other.Top > Bottom)
+	if (other.top > bottom)
 		return true;
 
-	if (Other.Left > Right)
+	if (other.left > right)
 		return true;
 
-	if (Other.Bottom < Top)
+	if (other.bottom < top)
 		return true;
 
 	return false;
 }
 
-void Rectangle::ClipTo(const Rectangle& Other)
+void Rectangle::clipTo(const Rectangle& other)
 {
-	Left = std::max(Left, Other.Left);
-	Right = std::min(Right, Other.Right);
-	Top = std::max(Top, Other.Top);
-	Bottom = std::min(Bottom, Other.Bottom);
+	left = std::max(left, other.left);
+	right = std::min(right, other.right);
+	top = std::max(top, other.top);
+	bottom = std::min(bottom, other.bottom);
 }
 
-void Rectangle::Translate(int DX, int DY)
+void Rectangle::translate(int dX, int dY)
 {
-	Left += DX;
-	Right += DX;
-	Top += DY;
-	Bottom += DY;
+	left += dX;
+	right += dX;
+	top += dY;
+	bottom += dY;
 }

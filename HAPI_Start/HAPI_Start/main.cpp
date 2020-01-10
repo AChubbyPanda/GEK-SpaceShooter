@@ -30,10 +30,10 @@ void HAPI_Main()
 {
 	World world;
 
-	world.Run();
+	world.run();
 
 	while (HAPI.Update())
 	{
-		world.Update();
+		world.update();
 	}
 }

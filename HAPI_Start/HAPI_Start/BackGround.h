@@ -3,12 +3,12 @@
 
 class BackGround : public Entity
 {
-	const void TakeDamage() override final;
-	void Update() override final;
-	ESide GetSide() const override final;
+	const void takeDamage() override final;
+	void update() override final;
+	ESide getSide() const override final;
 
 public:
-	BackGround(std::string EntityName);
+	BackGround(std::string entityName);
 	~BackGround();
 };
 

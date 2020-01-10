@@ -1,4 +1,11 @@
-﻿  Visualisation.cpp
+﻿  BackGround.cpp
+  Bullet.cpp
+  Enemy.cpp
+  Entity.cpp
+  main.cpp
+  MenuSystem.cpp
+  Player.cpp
+  Visualisation.cpp
   World.cpp
   Generating Code...
-  HAPI_Start.vcxproj -> C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\x64\Debug\HAPI_Start.exe
+  HAPI_Start.vcxproj -> C:\Users\neil\Desktop\GEK-SpaceShooter\HAPI_Start\x64\Debug\HAPI_Start.exe

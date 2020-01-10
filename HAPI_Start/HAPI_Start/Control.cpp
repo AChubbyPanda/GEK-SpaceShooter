@@ -4,7 +4,7 @@ Control::~Control()
 {
 }
 
-void Control::ControlInPut()
+void Control::controlInPut()
 {
 	//const HAPI_TKeyboardData& KeyData = HAPI.GetKeyboardData();
 	//const HAPI_TControllerData& ControlData = HAPI.GetControllerData(0);
@@ -50,7 +50,7 @@ void Control::ControlInPut()
 	//}
 }
 
-void Control::GetInPut()
+void Control::getInPut()
 {
-	return ControlInPut();
+	return controlInPut();
 }

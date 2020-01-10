@@ -1,28 +1,28 @@
 #include "Enemy.h"
 
-const void Enemy::TakeDamage()
+const void Enemy::takeDamage()
 {
 	int temp = m_Health - m_Damage;
 	m_Health = temp;
 }
 
-void Enemy::Update()
+void Enemy::update()
 {
 	// AI stuff
 }
 
-ESide Enemy::GetSide() const
+ESide Enemy::getSide() const
 {
 	return ESide::eSideEnemy;
 }
 
-Enemy::Enemy (std::string EntityName, int enemyHealth, int enemyDamage, int enemyPoints)
-	: Entity(EntityName)
-	, m_Points{}
+Enemy::Enemy (std::string entityName, int enemyHealth, int enemyDamage, int enemyPoints)
+	: Entity(entityName)
+	, points{}
 {
 	m_Health = enemyHealth;
 	m_Damage = enemyDamage;
-	m_Points = enemyPoints;
+	points = enemyPoints;
 }
 
 //Enemy::Enemy(std::string EntityName)

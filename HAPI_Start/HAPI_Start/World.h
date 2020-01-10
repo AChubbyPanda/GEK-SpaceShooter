@@ -9,16 +9,16 @@ class Visualisation;
 class World
 {
 private:
-	Visualisation* m_Viz;
+	Visualisation* viz;
 
-	std::vector<Entity*>m_EntityVector;
-	bool LoadLevel();
+	std::vector<Entity*>entityVector;
+	bool loadLevel();
 
 public:
 	World();
 	~World();
 
-	void Run();
-	void Update();
+	void run();
+	void update();
 };
 
