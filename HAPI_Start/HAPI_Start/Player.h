@@ -2,6 +2,7 @@
 #define Player_h //This is used when more than one header file is compiling the same header file.
 
 #include "Entity.h"
+#include "World.h"
 
 #include <string>
 
@@ -16,9 +17,11 @@ public:
 	const int getScore();
 
 	void playerMovement();
-	void fireBullet(std::string entityName);
+	void fireBullet(int x, int y);
+	int getPositionX();
+	int getPositionY();
 	void update() override final;
-	ESide getSide() const override final;
+	int getSide() const override final;
 	Player(std::string entityName, int playerHealth, int playerDamage);
 	~Player();
 };

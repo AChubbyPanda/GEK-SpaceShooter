@@ -10,9 +10,9 @@ void Bullet::update()
 {
 }
 
-ESide Bullet::getSide() const
+int Bullet::getSide() const
 {
-	return ESide();
+	return side;
 }
 
 //bool Bullet::IsDead()
@@ -20,8 +20,10 @@ ESide Bullet::getSide() const
 //	return true;
 //}
 
-Bullet::Bullet(std::string entityName, int bulletHealth, int bulletDamage)
+Bullet::Bullet(std::string entityName, int bulletHealth, int bulletDamage, int side)
 	: Entity(entityName)
+	, speed {5}
+	, side { side }
 {
 	m_Health = bulletHealth;
 	m_Damage = bulletDamage;

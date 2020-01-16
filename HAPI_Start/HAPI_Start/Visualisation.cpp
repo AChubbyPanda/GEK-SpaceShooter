@@ -15,9 +15,9 @@ Visualisation::Visualisation()
 Visualisation::~Visualisation()
 {
 	//Deletes all stored data in the vector, stops memory leaks.
-	/*for (size_t i = 0; i != m_VisStorage.size(); i++)
+	/*for (size_t i = 0; i != entityMap.size(); i++)
 	{
-		delete m_VisStorage[i];
+		delete entityMap[i];
 	}*/
 
 	for (auto& p : entityMap)
@@ -44,11 +44,6 @@ bool Visualisation::vizInitialise(int width, int height)
 	HAPI.SetShowFPS(true);
 
 	return true;
-}
-
-void Visualisation::vizShutdown()
-{
-	//delete Instance;
 }
 
 void Visualisation::clearToColour(BYTE* screen, HAPI_TColour col, int width, int height)
@@ -86,7 +81,7 @@ void Visualisation::vizUpdate()
 	Visualisation::clearToColour(screenPointer, colour, screenWidth, screenHeight);
 }
 
-bool Visualisation::createSprite(const std::string& name, const std::string& fileName)
+bool Visualisation::createSprite(const std::string name, const std::string& fileName)
 {
 	Texture* tex = Texture::createTexture(name, fileName);
 

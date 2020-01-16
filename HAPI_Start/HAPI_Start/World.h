@@ -9,16 +9,18 @@ class Visualisation;
 class World
 {
 private:
+	static World* world;
+	World();
 	Visualisation* viz;
 
-	std::vector<Entity*>entityVector;
+	std::vector<std::vector<Entity*>>entityVector;
 	bool loadLevel();
 
 public:
-	World();
 	~World();
-
+	static World* getInstance();
 	void run();
 	void update();
+	void getPool();
 };
 

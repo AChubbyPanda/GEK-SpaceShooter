@@ -8,6 +8,15 @@
 #include <string>
 #include "LoadTexture.h"
 
+enum class ESprites
+{
+	ESpritesBackGround,
+	ESpritesPlayerGraphic,
+	ESpritesEnemyGraphicGreen,
+	ESpritesPlayerLaser,
+	ESpritesEnemyLaserGreen
+};
+
 enum class ESide
 {
 	eSidePlayer,
@@ -40,7 +49,7 @@ public:
 	const virtual void takeDamage() = 0;
 	void render(Visualisation& Viz);
 	virtual void update() = 0;
-	virtual ESide getSide() const = 0;
+	virtual int getSide() const = 0;
 	void setAlive();
 
 	//Entity(const std::string e_Name, int e_PosX, int e_PosY, int e_Health, int e_Damage, const ESide e_Side);

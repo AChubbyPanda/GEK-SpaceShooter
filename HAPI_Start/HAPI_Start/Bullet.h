@@ -6,12 +6,13 @@
 class Bullet : public Entity
 {
 private:
-
+	int speed;
+	int side;
 public:
 	const void takeDamage() override final;
 	void update() override final;
-	ESide getSide() const override final;
-	Bullet(std::string entityName, int bulletHealth, int bulletDamage);
+	int getSide() const override final;
+	Bullet(std::string entityName, int bulletHealth, int bulletDamage, int side);
 	//Bullet(std::string EntityName);
 	~Bullet();
 };

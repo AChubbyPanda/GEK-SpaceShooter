@@ -17,7 +17,7 @@ void BackGround::update()
 {
 }
 
-ESide BackGround::getSide() const
+int BackGround::getSide() const
 {
-	return ESide::eSideNeutral;
+	return (int)ESide::eSideNeutral;
 }

@@ -5,7 +5,7 @@ class BackGround : public Entity
 {
 	const void takeDamage() override final;
 	void update() override final;
-	ESide getSide() const override final;
+	int getSide() const override final;
 
 public:
 	BackGround(std::string entityName);

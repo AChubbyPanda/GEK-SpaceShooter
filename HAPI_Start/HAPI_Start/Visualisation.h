@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include "LoadTexture.h"
 #include "Entity.h"
+#include <vector>
 
 using namespace HAPISPACE;
 
@@ -40,10 +41,9 @@ public:
 	Visualisation();
 	~Visualisation();
 	bool vizInitialise(int width, int height);
-	static void vizShutdown();
 	void vizUpdate();
 	//std::map< std::string, int > mapLocation;
-	bool createSprite(const std::string& name, const std::string& fileName);
+	bool createSprite(const std::string name, const std::string& fileName);
 	void vizDraw(const std::string name, int x, int y);
 };
 

@@ -10,7 +10,7 @@ bool Texture::Load(const std::string& fileName)
 	return true;
 }
 
-Texture* Texture::createTexture(const std::string& name, const std::string& fileName)
+Texture* Texture::createTexture(const std::string name, const std::string& fileName)
 {
 	Texture* tex = new Texture();
 

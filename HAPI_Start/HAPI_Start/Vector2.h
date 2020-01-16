@@ -25,7 +25,10 @@ public:
 
 	//TODO
 	// - operator. Returns the result of subtracting the rhs from this
-	// Vector2 operator - (const Vector2 &rhs) const
+	Vector2 operator - (const Vector2& rhs) const
+	{
+		return Vector2(x - rhs.x, y - rhs.y);
+	}
 
 	// * operator. Returns the result of muliplying the rhs scaler to this
 	// Vector2 operator * (float rhs) const

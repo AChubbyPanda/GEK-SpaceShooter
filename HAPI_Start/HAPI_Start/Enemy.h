@@ -9,7 +9,7 @@ private:
 public:
 	const void takeDamage() override;
 	void update() override final;
-	ESide getSide() const override final;
+	int getSide() const override final;
 	Enemy(std::string entityName, int enemyHealth, int enemyDamage, int enemyPoints);
 	~Enemy();
 };

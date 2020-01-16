@@ -43,6 +43,10 @@ void Player::playerMovement()
 		{
 			m_Position.x += speed;
 		}
+		if (ControlData.digitalButtons[HK_ANALOGUE_RIGHT_TRIGGER])
+		{
+
+		}
 	}
 
 	//	Keyboard Input 
@@ -65,19 +69,25 @@ void Player::playerMovement()
 	}
 	if (KeyData.scanCode[HK_SPACE])
 	{
-		
+		fireBullet(getPositionX(), getPositionY());
 	}
 }
 
-void Player::fireBullet(std::string entityName)
+void Player::fireBullet(int x, int y)
+ {
+	x = getPositionX();
+	y = getPositionY();
+	World::getInstance()->getPool();
+}
+
+int Player::getPositionX()
 {
-	m_EntityName = entityName;
-	if (setAlive == false)
-	{
-		->setAlive = true;
+	return (int)m_Position.x;
+}
 
-	}
-
+int Player::getPositionY()
+{
+	return (int)m_Position.y;
 }
 
 void Player::update()
@@ -85,9 +95,9 @@ void Player::update()
 	playerMovement();
 }
 
-ESide Player::getSide() const
+int Player::getSide() const
 {
-	return ESide::eSidePlayer;
+	return (int)ESide::eSidePlayer;
 }
 
 Player::Player(std::string entityName, int playerHealth, int playerDamage)

@@ -5,21 +5,38 @@
 #include "BackGround.h"
 #include "Visualisation.h"
 #include <memory>
+#include "Entity.h"
+
+World* World::world = NULL;
 
 World::World()
 	: viz{nullptr}
-	
+	, entityVector{ 5 }
 {
+	
 }
 
 World::~World()
 {
 	delete viz;
 
-	for (auto p : entityVector)
+	//Deletes all stored data in the vector, of vectors stops memory leaks.
+	for (size_t i = 0; i != entityVector.size(); i++)
 	{
-		delete p;
-	};
+		for (size_t j = 0; j < entityVector [i].size(); j++)
+		{
+			delete entityVector[i][j];
+		}
+	}
+}
+
+World* World::getInstance()
+{
+	if (world == NULL)
+	{
+		world = new World();
+	}
+	return world;
 }
 
 bool World::loadLevel()
@@ -56,36 +73,36 @@ bool World::loadLevel()
 	};
 
 	BackGround* newBackGround = new BackGround("BackGround");
-	entityVector.push_back(newBackGround);
+	entityVector[(int)ESprites::ESpritesBackGround].push_back(newBackGround);
 	newBackGround->setPosition(Vector2(0, 0));
 	newBackGround->setAlive();
-
+	
 	Player *newPlayer = new Player("PlayerGraphic", 20,1);
-	entityVector.push_back(newPlayer);
+	entityVector [(int)ESprites::ESpritesPlayerGraphic].push_back (newPlayer);
 	newPlayer->setPosition(Vector2(100, 100));
 	newPlayer->setAlive();
+	const int k_numEnemy = 100;
 
-	for (int i = 0; entityVector.size() < 102; i++)
+	for (int i = 0; i < k_numEnemy; i++)
 	{
-		Enemy* newEnemy = new Enemy("EnemyGraphicGreen",9,2,rand() % 100 + 25);
-		entityVector.push_back(newEnemy);
-		i++;
+		Enemy* newEnemy = new Enemy("EnemyGraphicGreen", 9, 2, rand() % 100 + 25);
+		entityVector[(int)ESprites::ESpritesEnemyGraphicGreen].push_back(newEnemy);
+	}
+	
+	const int k_numPlayerBullet = 100;
+
+	for (int i = 0; i < k_numPlayerBullet; i++)
+	{
+		Bullet* playerBullet = new Bullet("PlayerLaser", 1, 3, (int)ESide::eSidePlayer);
+		entityVector[(int)ESprites::ESpritesPlayerLaser].push_back(playerBullet);
 	}
 
-	for (int i = 0; entityVector.size() < 202; i++)
-	{
-		//need to look at the spawn location of the bullets
-		Bullet *playerBullet = new Bullet("PlayerLaser",1, 3);
-		entityVector.push_back(playerBullet);
-		i++;
-	}
+	const int k_numEnemyBullet = 100;
 
-	for (int i = 0; entityVector.size() < 302; i++)
+	for (int i = 0; i < k_numEnemyBullet; i++)
 	{
-		//need to look at the spawn location of the bullets
-		Bullet* enemyBullet = new Bullet("EnemyLaserGreen", 1, 2);
-		entityVector.push_back(enemyBullet);
-		i++;
+		Bullet* enemyBullet = new Bullet("EnemyLaserGreen", 1, 2, (int)ESide::eSideEnemy);
+		entityVector[(int)ESprites::ESpritesEnemyLaserGreen].push_back(enemyBullet);
 	}
 
 	return true;
@@ -94,15 +111,27 @@ bool World::loadLevel()
 void World::update()
 {
 	viz->vizUpdate();
-
-	for (auto p : entityVector)
+	for (size_t i = 0; i != entityVector.size(); i++)
 	{
-	p->update();
+		for (size_t j = 0; j < entityVector[i].size(); j++)
+		{
+			entityVector[i][j]->update();
+		}
 	}
 
-	for (auto p : entityVector)
+	for (size_t i = 0; i != entityVector.size(); i++)
 	{
-		p->render(*viz);
+		for (size_t j = 0; j < entityVector[i].size(); j++)
+		{
+			entityVector[i][j]->render(*viz);
+		}
+	}
+}
+
+void World::getPool()
+{
+	for (int i = (int)ESprites::ESpritesPlayerLaser; i != entityVector.size(); i++)
+	{
 	}
 }
 
@@ -110,7 +139,7 @@ void World::run()
 {
 	viz = new Visualisation;
 
-	if (!viz->vizInitialise(1536, 720))
+	if (!viz->vizInitialise(1080, 720))
 	{
 		return;
 	}
@@ -121,5 +150,3 @@ void World::run()
 		return;
 	}
 }
-
-

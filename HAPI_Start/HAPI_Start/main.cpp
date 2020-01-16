@@ -28,12 +28,10 @@ using namespace std;
 
 void HAPI_Main()
 {
-	World world;
-
-	world.run();
+	World::getInstance()->run();
 
 	while (HAPI.Update())
 	{
-		world.update();
+		World::getInstance()->update();
 	}
 }

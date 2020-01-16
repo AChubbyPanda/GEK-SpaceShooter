@@ -11,9 +11,9 @@ void Enemy::update()
 	// AI stuff
 }
 
-ESide Enemy::getSide() const
+int Enemy::getSide() const
 {
-	return ESide::eSideEnemy;
+	return (int)ESide::eSideEnemy;
 }
 
 Enemy::Enemy (std::string entityName, int enemyHealth, int enemyDamage, int enemyPoints)
