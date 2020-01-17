@@ -21,6 +21,6 @@ public:
 	static World* getInstance();
 	void run();
 	void update();
-	void getPool();
+	Entity* getEntity(int type);
 };
 

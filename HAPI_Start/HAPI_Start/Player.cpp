@@ -1,15 +1,26 @@
 #include "Player.h"
+#include "Bullet.h"
 
 const void Player::takeDamage()
 {
 	int temp = m_Health - m_Damage;
 	m_Health = temp;
+	
+	if (m_Health <= 0)
+	{
+		setDead();
+		lifes - 1;
+		if (lifes <= 0)
+		{
+			//Game Over
+		}
+		else
+		{
+			m_Health = respawnHealth;
+			setAlive();
+		}
+	}
 }
-
-//bool Player::IsDead()
-//{
-//	return true;
-//}
 
 const int Player::getScore()
 {
@@ -45,7 +56,7 @@ void Player::playerMovement()
 		}
 		if (ControlData.digitalButtons[HK_ANALOGUE_RIGHT_TRIGGER])
 		{
-
+			fireBullet(getPositionX(), getPositionY());
 		}
 	}
 
@@ -75,9 +86,10 @@ void Player::playerMovement()
 
 void Player::fireBullet(int x, int y)
  {
-	x = getPositionX();
-	y = getPositionY();
-	World::getInstance()->getPool();
+	x = getPositionX()+75;
+	y = getPositionY()+50;
+	Bullet* bullet = (Bullet*)World::getInstance()->getEntity((int)ESprites::ESpritesPlayerLaser);
+	bullet->setPosition(Vector2(x, y));
 }
 
 int Player::getPositionX()
@@ -89,6 +101,7 @@ int Player::getPositionY()
 {
 	return (int)m_Position.y;
 }
+
 
 void Player::update()
 {
@@ -104,6 +117,8 @@ Player::Player(std::string entityName, int playerHealth, int playerDamage)
 	: Entity(entityName)
 	, score{ 0 }
 	, speed{ 5 }
+	, lifes{ 3 }
+	, respawnHealth{ 20 }
 {
 	m_Health = playerHealth;
 	m_Damage = playerDamage;

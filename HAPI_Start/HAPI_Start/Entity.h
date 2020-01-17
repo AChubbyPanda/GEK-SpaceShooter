@@ -36,7 +36,7 @@ private:
 protected:
 	int m_PosX;
 	int m_PosY;
-
+	
 	unsigned int m_Health;
 	unsigned int m_Damage;
 
@@ -45,14 +45,14 @@ protected:
 
 public:
 	void setPosition(Vector2 newPos);
-	//void Render(const Rectangle& screenRect, BYTE screen, int posX, int posY);
 	const virtual void takeDamage() = 0;
 	void render(Visualisation& Viz);
 	virtual void update() = 0;
 	virtual int getSide() const = 0;
 	void setAlive();
+	void setDead();
+	bool isAlive() { return m_Alive; };
 
-	//Entity(const std::string e_Name, int e_PosX, int e_PosY, int e_Health, int e_Damage, const ESide e_Side);
 	Entity(std::string spriteName);
 	virtual ~Entity();
 };

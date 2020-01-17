@@ -1,11 +1,6 @@
 #include "Entity.h"
-#include "Base.h"
 #include "Visualisation.h"
 #include "LoadTexture.h"
-
-//void Entity::Render(const Rectangle& screenRect, BYTE screen, int posX, int posY)
-//{
-//}
 
 void Entity::setPosition(Vector2 newPos)
 {
@@ -25,14 +20,10 @@ void Entity::setAlive()
 	m_Alive = true;
 }
 
-//Entity::Entity(const std::string e_Name, int e_PosX, int e_PosY, int e_Health, int e_Damage, const ESide e_Side)
-//	: m_TexturePointer{nullptr}
-//	, TexWidth{0}
-//	, TexHeight{0}
-//	, m_TextureRect{TexWidth, TexHeight}
-//	, m_alive {true}
-//{
-//}
+void Entity::setDead()
+{
+	m_Alive = false;
+}
 
 Entity::Entity(std::string entityName) 
 	: m_EntityName(entityName)
@@ -47,9 +38,5 @@ Entity::Entity(std::string entityName)
 
 Entity::~Entity()
 {
-	//Deletes all stored data in the vector, stops memory leaks.
-	/*for (size_t i = 0; i != m_Entity.size(); i++)
-	{
-		delete m_Entity[i];
-	}*/
+	
 }

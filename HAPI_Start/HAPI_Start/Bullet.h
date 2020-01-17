@@ -1,7 +1,6 @@
 #pragma once
 #include<string>
 #include "Entity.h"
-#include "Entity.h"
 
 class Bullet : public Entity
 {
@@ -13,7 +12,6 @@ public:
 	void update() override final;
 	int getSide() const override final;
 	Bullet(std::string entityName, int bulletHealth, int bulletDamage, int side);
-	//Bullet(std::string EntityName);
 	~Bullet();
 };
 

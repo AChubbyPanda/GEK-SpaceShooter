@@ -4,6 +4,11 @@ const void Enemy::takeDamage()
 {
 	int temp = m_Health - m_Damage;
 	m_Health = temp;
+
+	if (m_Health <= 0)
+	{
+		setDead();
+	}
 }
 
 void Enemy::update()
@@ -24,11 +29,6 @@ Enemy::Enemy (std::string entityName, int enemyHealth, int enemyDamage, int enem
 	m_Damage = enemyDamage;
 	points = enemyPoints;
 }
-
-//Enemy::Enemy(std::string EntityName)
-//	: Entity(EntityName)
-//{
-//}
 
 Enemy::~Enemy()
 {

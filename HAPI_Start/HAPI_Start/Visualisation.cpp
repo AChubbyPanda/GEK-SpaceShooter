@@ -14,12 +14,6 @@ Visualisation::Visualisation()
 
 Visualisation::~Visualisation()
 {
-	//Deletes all stored data in the vector, stops memory leaks.
-	/*for (size_t i = 0; i != entityMap.size(); i++)
-	{
-		delete entityMap[i];
-	}*/
-
 	for (auto& p : entityMap)
 	{
 		delete p.second;
@@ -130,8 +124,6 @@ void Visualisation::blitzAlpha(BYTE* screen, int width, int height, int x, int y
 	// Passed in the destination (normally the screen) pointer and rectangle and the      
 	// source (a texture) pointer and rectangle
 	// Also needs the screen position of the top left corner to blit to
-	/*Rectangle ScreenBox(0, 0, ScreenWidth, ScreenHeight);
-	Rectangle PlayerBox(0, 0, TexWidth, TexHeight);*/
 	Rectangle ScreenBox(0, 0, width, height);
 	Rectangle PlayerBox(0, 0, tex->texWidth, tex->texHeight);
 

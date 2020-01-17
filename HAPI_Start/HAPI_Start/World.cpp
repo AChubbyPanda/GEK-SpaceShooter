@@ -81,6 +81,7 @@ bool World::loadLevel()
 	entityVector [(int)ESprites::ESpritesPlayerGraphic].push_back (newPlayer);
 	newPlayer->setPosition(Vector2(100, 100));
 	newPlayer->setAlive();
+
 	const int k_numEnemy = 100;
 
 	for (int i = 0; i < k_numEnemy; i++)
@@ -89,7 +90,7 @@ bool World::loadLevel()
 		entityVector[(int)ESprites::ESpritesEnemyGraphicGreen].push_back(newEnemy);
 	}
 	
-	const int k_numPlayerBullet = 100;
+	const int k_numPlayerBullet = 200;
 
 	for (int i = 0; i < k_numPlayerBullet; i++)
 	{
@@ -128,11 +129,19 @@ void World::update()
 	}
 }
 
-void World::getPool()
+Entity* World::getEntity(int type)
 {
-	for (int i = (int)ESprites::ESpritesPlayerLaser; i != entityVector.size(); i++)
+	// This will loop till it finds the type (ESprites), then it will loop though all dead bools and make them alive when called
+	for (int i = 0; i < entityVector[type].size(); ++i)
 	{
+		if (!entityVector[type][i]->isAlive())
+		{
+			entityVector[type][i]->setAlive();
+			return entityVector[type][i];
+		}
 	}
+	HAPI.UserMessage("Error ", "Increase pool size");
+	return nullptr;
 }
 
 void World::run()

@@ -11,6 +11,8 @@ class Player : public Entity
 private:
 	int score;
 	int speed;
+	int lifes;
+	int respawnHealth;
 
 public:
 	const void takeDamage() override;
