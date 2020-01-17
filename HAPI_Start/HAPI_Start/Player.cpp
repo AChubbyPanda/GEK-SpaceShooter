@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Bullet.h"
+#include "TimeClass.h"
 
 const void Player::takeDamage()
 {

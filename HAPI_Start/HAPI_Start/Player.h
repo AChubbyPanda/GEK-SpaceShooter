@@ -13,7 +13,6 @@ private:
 	int speed;
 	int lifes;
 	int respawnHealth;
-
 public:
 	const void takeDamage() override;
 	const int getScore();

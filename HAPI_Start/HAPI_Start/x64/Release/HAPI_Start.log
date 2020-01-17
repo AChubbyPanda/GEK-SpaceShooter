@@ -1,17 +1,6 @@
-﻿  BackGround.cpp
-  Bullet.cpp
-  Control.cpp
-  Enemy.cpp
-  Entity.cpp
-  LoadTexture.cpp
-  main.cpp
-  Path.cpp
-  Player.cpp
-C:\Users\neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Player.cpp(12,9): warning C4552: '-': result of expression not used
-C:\Users\neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Player.cpp(91,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Rectangle.cpp
-  Visualisation.cpp
-  World.cpp
-  Generating Code...
-C:\Users\neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Player.cpp(91,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  Path.cpp
+C:\Users\neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.cpp(33,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.cpp(33,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.cpp(37,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.cpp(37,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   HAPI_Start.vcxproj -> C:\Users\neil\Desktop\GEK-SpaceShooter\HAPI_Start\x64\Release\HAPI_Start.exe

@@ -13,7 +13,7 @@ const void Bullet::takeDamage()
 
 void Bullet::update()
 {
-	if (side = (int)ESprites::ESpritesPlayerLaser)
+	if (side == (int)ESide::eSidePlayer)
 	{
 		m_Position.x += speed;
 	}

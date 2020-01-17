@@ -81,7 +81,7 @@ bool World::loadLevel()
 	entityVector [(int)ESprites::ESpritesPlayerGraphic].push_back (newPlayer);
 	newPlayer->setPosition(Vector2(100, 100));
 	newPlayer->setAlive();
-
+	
 	const int k_numEnemy = 100;
 
 	for (int i = 0; i < k_numEnemy; i++)
@@ -112,6 +112,12 @@ bool World::loadLevel()
 void World::update()
 {
 	viz->vizUpdate();
+
+	//Need to check it works
+	Enemy* enemy = (Enemy*)World::getInstance()->getEntity((int)ESprites::ESpritesPlayerGraphic);
+	enemy->init();
+	//
+
 	for (size_t i = 0; i != entityVector.size(); i++)
 	{
 		for (size_t j = 0; j < entityVector[i].size(); j++)

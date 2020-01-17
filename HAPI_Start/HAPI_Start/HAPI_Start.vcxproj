@@ -34,6 +34,7 @@
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="TimeClass.cpp" />
     <ClCompile Include="Visualisation.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -47,6 +48,7 @@
     <ClInclude Include="Path.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rectangle.h" />
+    <ClInclude Include="TimeClass.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Visualisation.h" />
     <ClInclude Include="World.h" />
