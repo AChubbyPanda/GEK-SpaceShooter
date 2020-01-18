@@ -1,6 +1,9 @@
-﻿  Path.cpp
-C:\Users\neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.cpp(33,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.cpp(33,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.cpp(37,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.cpp(37,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  HAPI_Start.vcxproj -> C:\Users\neil\Desktop\GEK-SpaceShooter\HAPI_Start\x64\Release\HAPI_Start.exe
+﻿  Player.cpp
+C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Player.cpp(13,9): warning C4552: '-': result of expression not used
+C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Player.cpp(44,78): error C2297: '*': illegal, right operand has type 'void'
+C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Player.cpp(48,78): error C2297: '*': illegal, right operand has type 'void'
+C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Player.cpp(93,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  TimeClass.cpp
+C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Player.cpp(93,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\TimeClass.cpp(23,7): warning C4552: '-': result of expression not used

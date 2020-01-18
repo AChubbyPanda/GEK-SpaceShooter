@@ -1,6 +1,9 @@
 #pragma once
 class TimeClass
 {
+private:
+	static TimeClass* timeClass;
+
 	int oldTime;
 	int newTime;
 
@@ -8,7 +11,7 @@ class TimeClass
 	~TimeClass();
 
 public:
-	static TimeClass timeClass;
 	void delta(int oldT, int newT);
+	static TimeClass* getInstance();
 };
 

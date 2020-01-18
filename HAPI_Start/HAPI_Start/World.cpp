@@ -146,7 +146,6 @@ Entity* World::getEntity(int type)
 			return entityVector[type][i];
 		}
 	}
-	HAPI.UserMessage("Error ", "Increase pool size");
 	return nullptr;
 }
 

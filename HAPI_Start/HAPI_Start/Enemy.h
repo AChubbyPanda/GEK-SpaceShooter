@@ -5,12 +5,12 @@
 class Enemy : public Entity
 {
 private:
-	float speed = 1.0f;
+	float speed;
 	int points;
-	int pathType = 0;
-	int pathIndex = 0;
+	int pathType;
+	int pathIndex;
 	float pathStartTime;
-	bool initialised = false;
+	bool initialised;
 
 public:
 	const void takeDamage() override;

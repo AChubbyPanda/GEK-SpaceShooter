@@ -1,9 +1,11 @@
 #include "TimeClass.h"
 #include "HAPI_lib.h"
 
+TimeClass* TimeClass::timeClass = NULL;
+
 TimeClass::TimeClass()
-	: oldTime(newTime)
-	, newTime (HAPI.GetTime())
+	: newTime(HAPI.GetTime())
+	, oldTime(0)
 {
 
 }
@@ -19,4 +21,13 @@ void TimeClass::delta(int oldT, int newT)
 	newT = newTime;
 
 	newT - oldT / 16;
+}
+
+TimeClass* TimeClass::getInstance()
+{
+	if (timeClass == NULL)
+	{
+		timeClass = new TimeClass();
+	}
+	return timeClass;
 }

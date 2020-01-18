@@ -55,7 +55,12 @@ int Enemy::getSide() const
 
 Enemy::Enemy (std::string entityName, int enemyHealth, int enemyDamage, int enemyPoints)
 	: Entity(entityName)
-	, points{}
+	, points{ 0 }
+	, pathStartTime{ 0 }
+	, speed{ 1.0f }
+	, pathType{ 0 }
+	, pathIndex{ 0 }
+	, initialised{ false }
 {
 	m_Health = enemyHealth;
 	m_Damage = enemyDamage;
