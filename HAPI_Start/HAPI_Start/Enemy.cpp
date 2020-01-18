@@ -15,8 +15,8 @@ const void Enemy::takeDamage()
  
 void Enemy::init()
 {
-	pathType = Path::getInstance()->randomPath();
-	m_Position = Path::getInstance()->getPoint(pathType, 0);
+	pathType = Path::randomPath();
+	m_Position = Path::getPoint(pathType, 0);
 	pathStartTime = HAPI.GetTime();
 	setAlive();
 	initialised = true;
@@ -30,8 +30,8 @@ void Enemy::update()
 
 void Enemy::move()
 {
-	Vector2 startPoint = Path::getInstance()->getPoint(pathType, pathIndex);
-	Vector2 endPoint = Path::getInstance()->getPoint(pathType, pathIndex +1);
+	Vector2 startPoint = Path::getPoint(pathType, pathIndex);
+	Vector2 endPoint = Path::getPoint(pathType, pathIndex +1);
 
 	if (m_Position.x == endPoint.x && m_Position.y == endPoint.y)
 	{

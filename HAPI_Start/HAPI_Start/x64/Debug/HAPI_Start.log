@@ -1,5 +1,11 @@
 ﻿  Enemy.cpp
+  Path.cpp
+C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Enemy.cpp(20,30): warning C4244: '=': conversion from 'HAPISPACE::DWORD' to 'float', possible loss of data
+C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.cpp(15,1): error C2438: 'firstPath': cannot initialize static class data via constructor
+C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.cpp(15,1): error C2438: 'secondPath': cannot initialize static class data via constructor
+C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.cpp(33,67): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.cpp(33,41): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.cpp(37,68): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
   World.cpp
   Generating Code...
-C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Enemy.cpp(20,30): warning C4244: '=': conversion from 'HAPISPACE::DWORD' to 'float', possible loss of data
-  HAPI_Start.vcxproj -> C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\x64\Debug\HAPI_Start.exe
+C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.cpp(37,42): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
