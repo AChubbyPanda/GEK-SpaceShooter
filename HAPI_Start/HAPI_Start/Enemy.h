@@ -5,7 +5,8 @@
 class Enemy : public Entity
 {
 private:
-	float speed;
+
+	int speed;
 	int points;
 	int pathType;
 	int pathIndex;

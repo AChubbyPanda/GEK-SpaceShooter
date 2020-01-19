@@ -57,7 +57,7 @@ Enemy::Enemy (std::string entityName, int enemyHealth, int enemyDamage, int enem
 	: Entity(entityName)
 	, points{ 0 }
 	, pathStartTime{ 0 }
-	, speed{ 1.0f }
+	, speed{ 3 }
 	, pathType{ 0 }
 	, pathIndex{ 0 }
 	, initialised{ false }

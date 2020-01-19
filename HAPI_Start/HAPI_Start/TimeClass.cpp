@@ -4,7 +4,7 @@
 TimeClass* TimeClass::timeClass = NULL;
 
 TimeClass::TimeClass()
-	: newTime(HAPI.GetTime())
+	: newTime(0)
 	, oldTime(0)
 {
 
@@ -15,12 +15,9 @@ TimeClass::~TimeClass()
 }
 
 
-void TimeClass::delta(int oldT, int newT)
+int TimeClass::getDelta()
 {
-	oldT = oldTime;
-	newT = newTime;
-
-	newT - oldT / 16;
+	return newTime;
 }
 
 TimeClass* TimeClass::getInstance()
@@ -30,4 +27,10 @@ TimeClass* TimeClass::getInstance()
 		timeClass = new TimeClass();
 	}
 	return timeClass;
+}
+
+void TimeClass::update()
+{
+	newTime = HAPI.GetTime() - oldTime;
+	oldTime = newTime;
 }

@@ -113,9 +113,11 @@ void World::update()
 {
 	viz->vizUpdate();
 
-	//Need to check it works
-	Enemy* enemy = (Enemy*)World::getInstance()->getEntity((int)ESprites::ESpritesPlayerGraphic);
-	enemy->init();
+
+	//Need to add a loop to check on how many enemys are spawned.
+	//Also speed is insane
+	/*Enemy* enemy = (Enemy*)getEntity((int)ESprites::ESpritesEnemyGraphicGreen);
+	enemy->init();*/
 	//
 
 	for (size_t i = 0; i != entityVector.size(); i++)

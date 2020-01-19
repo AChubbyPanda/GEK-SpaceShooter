@@ -19,6 +19,7 @@
 // Include the HAPI header to get access to all of HAPIs interfaces
 #include <HAPI_lib.h>
 #include "World.h"
+#include "TimeClass.h"
 // HAPI itself is wrapped in the HAPISPACE namespace
 using namespace HAPISPACE;
 using namespace std;
@@ -32,6 +33,7 @@ void HAPI_Main()
 
 	while (HAPI.Update())
 	{
+		TimeClass::getInstance()->getDelta();
 		World::getInstance()->update();
 	}
 }

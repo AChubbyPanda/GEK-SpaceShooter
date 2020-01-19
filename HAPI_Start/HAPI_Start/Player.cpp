@@ -45,7 +45,7 @@ void Player::playerMovement()
 		}
 		if (ControlData.digitalButtons[HK_DIGITAL_DPAD_DOWN] || ControlData.analogueButtons[HK_ANALOGUE_LEFT_THUMB_Y] < leftDeadZoneMin)
 		{
-			m_Position.x -= speed;
+			m_Position.x -= speed * TimeClass::getInstance()->getDelta();
 		}
 		if (ControlData.digitalButtons[HK_DIGITAL_DPAD_LEFT] || ControlData.analogueButtons[HK_ANALOGUE_LEFT_THUMB_X] < leftDeadZoneMin)
 		{

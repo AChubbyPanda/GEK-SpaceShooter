@@ -11,7 +11,8 @@ private:
 	~TimeClass();
 
 public:
-	void delta(int oldT, int newT);
+	int getDelta();
 	static TimeClass* getInstance();
+	void update();
 };
 

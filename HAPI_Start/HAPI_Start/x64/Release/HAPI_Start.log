@@ -1,9 +1,3 @@
-﻿  Player.cpp
-C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Player.cpp(13,9): warning C4552: '-': result of expression not used
-C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Player.cpp(44,78): error C2297: '*': illegal, right operand has type 'void'
-C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Player.cpp(48,78): error C2297: '*': illegal, right operand has type 'void'
-C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Player.cpp(93,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  TimeClass.cpp
-C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Player.cpp(93,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
-C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\TimeClass.cpp(23,7): warning C4552: '-': result of expression not used
+﻿  World.cpp
+C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\HAPI_Start\Path.h(23,2): warning C4091: 'static ': ignored on left of 'Path' when no variable is declared
+  HAPI_Start.vcxproj -> C:\Users\Neil\Desktop\GEK-SpaceShooter\HAPI_Start\x64\Release\HAPI_Start.exe
